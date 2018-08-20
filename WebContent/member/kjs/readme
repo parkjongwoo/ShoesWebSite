@@ -1,0 +1,6 @@
+WebContent readme
+
+data : ajax 등을 통해 화면에 뿌려줄 것을 불러오는 파일들(직접 url에 등록되지 않음)
+
+view : 사용자가 상호작용을 하면서 직접 방문하게 되는 페이지들 
+(index, login 등)
