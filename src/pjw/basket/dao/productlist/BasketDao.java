@@ -1,10 +1,10 @@
-package pjw.produclistitem.dao.productlist;
+package pjw.basket.dao.productlist;
 
 import java.util.List;
 
 import pjw.produclistitem.model.ProductListItem;
 
-public interface ProductListItemDao {
+public interface BasketDao {
 	List<ProductListItem> selectNewItems();
 	List<ProductListItem> selectPopItems();
 	List<ProductListItem> selectCateItems(int cateNum);

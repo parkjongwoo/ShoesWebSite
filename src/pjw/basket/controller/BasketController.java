@@ -1,4 +1,4 @@
-package pjw.produclistitem.controller;
+package pjw.basket.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,14 +17,14 @@ import pjw.produclistitem.model.ProductListItem;
 /**
  * Servlet implementation class ProductController
  */
-@WebServlet(name = "productListItemController", 
-			urlPatterns = { 
-					"/main", 
-					"/productlistbycategory",
-					"/productlistbykeyword",
-					"/productListItemSelectNew",
-					"/productListItemSelectPop" })
-public class ProductListItemController extends HttpServlet {
+@WebServlet(name = "BasketController", 
+			urlPatterns = {
+					"/basketPage",
+					"/basketList",
+					"/basketInsert",
+					"/basketDelete",
+					"/basketUpdate" })
+public class BasketController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private ProductListItemDao dao = new ProductListItemDaoImpl();

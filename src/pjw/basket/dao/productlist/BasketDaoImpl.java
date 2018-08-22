@@ -1,4 +1,4 @@
-package pjw.produclistitem.dao.productlist;
+package pjw.basket.dao.productlist;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import pjw.produclistitem.dao.BaseDao;
 import pjw.produclistitem.model.ProductListItem;
 import pjw.produclistitem.sql.SQL;
 
-public class ProductListItemDaoImpl extends BaseDao implements ProductListItemDao {
+public class BasketDaoImpl extends BaseDao implements BasketDao {
 
 	@Override
 	public List<ProductListItem> selectNewItems() {

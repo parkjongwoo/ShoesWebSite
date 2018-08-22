@@ -4,13 +4,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 {
 	"list":[
-		<c:forEach var="item" items="${productListNew}" varStatus="s">
+		<c:forEach var="item" items="${productList}" varStatus="s">
 		{
 			"pid":"${item.pid}",
 			"pname":"${item.pname}",
 			"pimgurl":"${item.pimgurl}",
 			"cname":"${item.cname}"
-		}<c:if test="${!status.last}">,</c:if>		
+		}<c:if test="${!s.last}">,</c:if>		
 		</c:forEach>		
-	]	
+	]
 }
