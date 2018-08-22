@@ -8,12 +8,7 @@ public class SQL {
 			"FROM (SELECT * FROM S_BASKET WHERE MID=?) B " + 
 			"INNER JOIN S_PRODUCT P ON B.PID=P.PID";
 	
-	public static final String BASKET_DELETE_ALL = "DELETE FROM S_BASKET WHERE MID=?";
-	
-	public static final String BASKET_DELETE_BY_PID = "DELETE FROM S_BASKET WHERE PID=? AND MID=?";
-	
-	public static final String BASKET_UPDATE_BY_PID = 
-			"UPDATE S_BASKET " + 
-			"SET BQUANTITY=? " + 
-			"WHERE PID=? AND MID=?";
+	public static final String BASKET_DELETE_ALL = "DELETE FROM S_BASKET WHERE MID=?";	
+	public static final String BASKET_DELETE_BY_PID = "DELETE FROM S_BASKET WHERE PID=? AND MID=?";	
+	public static final String BASKET_UPDATE_BY_PID = "UPDATE S_BASKET SET BQUANTITY=? WHERE PID=? AND MID=?";
 }

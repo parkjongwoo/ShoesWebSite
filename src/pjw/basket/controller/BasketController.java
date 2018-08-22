@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pjw.produclistitem.dao.productlist.ProductListItemDao;
-import pjw.produclistitem.dao.productlist.ProductListItemDaoImpl;
+import pjw.basket.dao.basket.BasketDao;
+import pjw.basket.dao.basket.BasketDaoImpl;
+import pjw.basket.model.BasketListItem;
 import pjw.produclistitem.model.ProductListItem;
 
 /**
@@ -19,7 +20,7 @@ import pjw.produclistitem.model.ProductListItem;
  */
 @WebServlet(name = "BasketController", 
 			urlPatterns = {
-					"/basketPage",
+					"/basketListPage",
 					"/basketList",
 					"/basketInsert",
 					"/basketDelete",
@@ -27,7 +28,7 @@ import pjw.produclistitem.model.ProductListItem;
 public class BasketController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private ProductListItemDao dao = new ProductListItemDaoImpl();
+	private BasketDao dao = new BasketDaoImpl();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -43,43 +44,46 @@ public class BasketController extends HttpServlet {
 		String action = uri.substring(lastIndex + 1);
 		System.out.println("action:" + action);
 
-		if (action.equals("main")) {
-
+		if (action.equals("basketListPage")) {
+//			String mid = "ohhyuk@gmail.com";
+//			List<BasketListItem> list = dao.selectAllItems(mid);
+//			request.setAttribute("basketList", list);
+			
 		} else if (action.equals("productlistbycategory")) {
-			String param_cid = request.getParameter("cid");
-			int cid = 1;
-			try {
-				if(param_cid!=null)
-					cid=Integer.parseInt(param_cid);
-			} catch (NumberFormatException e) {
-				cid = 1;
-				e.printStackTrace();
-			}
-			List<ProductListItem> list = dao.selectCateItems(cid);
-			request.setAttribute("productList", list);
-			if(list.size()>0)
-				request.setAttribute("cname", list.get(0).getCname());
+//			String param_cid = request.getParameter("cid");
+//			int cid = 1;
+//			try {
+//				if(param_cid!=null)
+//					cid=Integer.parseInt(param_cid);
+//			} catch (NumberFormatException e) {
+//				cid = 1;
+//				e.printStackTrace();
+//			}
+//			List<ProductListItem> list = dao.selectCateItems(cid);
+//			request.setAttribute("productList", list);
+//			if(list.size()>0)
+//				request.setAttribute("cname", list.get(0).getCname());
 			
 			
 		} else if (action.equals("productlistbykeyword")) {
-			String param_keyword = request.getParameter("keyword");
-			List<ProductListItem> list = dao.selectByKeyword(param_keyword);
-			request.setAttribute("productList", list);
-			request.setAttribute("keyword", param_keyword);
+//			String param_keyword = request.getParameter("keyword");
+//			List<ProductListItem> list = dao.selectByKeyword(param_keyword);
+//			request.setAttribute("productList", list);
+//			request.setAttribute("keyword", param_keyword);
 			
 		} else if (action.equals("productListItemSelectNew")) {
-			List<ProductListItem> list = dao.selectNewItems();
-			request.setAttribute("productList", list);
+//			List<ProductListItem> list = dao.selectNewItems();
+//			request.setAttribute("productList", list);
 
 		} else if (action.equals("productListItemSelectPop")) {
-			List<ProductListItem> list = dao.selectPopItems();
-			request.setAttribute("productList", list);
+//			List<ProductListItem> list = dao.selectPopItems();
+//			request.setAttribute("productList", list);
 		}
 
 		String requestUrl = null;
 
-		if (action.equals("main")) {
-			requestUrl = "/member/pjw/view/productList/jsp/main.jsp";	
+		if (action.equals("basketListPage")) {
+			requestUrl = "/member/pjw/view/basket/jsp/basketListPage.jsp";	
 		} else if (action.equals("productlistbycategory")) {
 			requestUrl = "/member/pjw/view/productList/jsp/categoryListPage.jsp";
 		} else if (action.equals("productlistbykeyword")) {

@@ -2,8 +2,9 @@ package pjw.basket.model;
 public class BasketListItem {
 	private int pid;
 	private String pname;
-	private String pimgurl;
-	private String cname;
+	private int bquantity;
+	private int pdcharge;
+	private int pprice;
 	public int getPid() {
 		return pid;
 	}
@@ -16,16 +17,23 @@ public class BasketListItem {
 	public void setPname(String pname) {
 		this.pname = pname;
 	}
-	public String getPimgurl() {
-		return pimgurl;
+	public int getBquantity() {
+		return bquantity;
 	}
-	public void setPimgurl(String pimgurl) {
-		this.pimgurl = pimgurl;
+	public void setBquantity(int bquantity) {
+		this.bquantity = bquantity;
 	}
-	public String getCname() {
-		return cname;
+	public int getPdcharge() {
+		return pdcharge;
 	}
-	public void setCname(String cname) {
-		this.cname = cname;
-	}	
+	public void setPdcharge(int pdcharge) {
+		this.pdcharge = pdcharge;
+	}
+	public int getPprice() {
+		return pprice;
+	}
+	public void setPprice(int pprice) {
+		this.pprice = pprice;
+	}
+	
 }

@@ -19,11 +19,11 @@ import pjw.produclistitem.model.ProductListItem;
  */
 @WebServlet(name = "productListItemController", 
 			urlPatterns = { 
-					"/main", 
-					"/productlistbycategory",
-					"/productlistbykeyword",
-					"/productListItemSelectNew",
-					"/productListItemSelectPop" })
+					"/mainPage", 
+					"/productlistbycategoryPage",
+					"/productlistbykeywordPage",
+					"/productListItemSelectNewJson",
+					"/productListItemSelectPopJson" })
 public class ProductListItemController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,9 +43,9 @@ public class ProductListItemController extends HttpServlet {
 		String action = uri.substring(lastIndex + 1);
 		System.out.println("action:" + action);
 
-		if (action.equals("main")) {
+		if (action.equals("mainPage")) {
 
-		} else if (action.equals("productlistbycategory")) {
+		} else if (action.equals("productlistbycategoryPage")) {
 			String param_cid = request.getParameter("cid");
 			int cid = 1;
 			try {
@@ -61,32 +61,32 @@ public class ProductListItemController extends HttpServlet {
 				request.setAttribute("cname", list.get(0).getCname());
 			
 			
-		} else if (action.equals("productlistbykeyword")) {
+		} else if (action.equals("productlistbykeywordPage")) {
 			String param_keyword = request.getParameter("keyword");
 			List<ProductListItem> list = dao.selectByKeyword(param_keyword);
 			request.setAttribute("productList", list);
 			request.setAttribute("keyword", param_keyword);
 			
-		} else if (action.equals("productListItemSelectNew")) {
+		} else if (action.equals("productListItemSelectNewJson")) {
 			List<ProductListItem> list = dao.selectNewItems();
 			request.setAttribute("productList", list);
 
-		} else if (action.equals("productListItemSelectPop")) {
+		} else if (action.equals("productListItemSelectPopJson")) {
 			List<ProductListItem> list = dao.selectPopItems();
 			request.setAttribute("productList", list);
 		}
 
 		String requestUrl = null;
 
-		if (action.equals("main")) {
-			requestUrl = "/member/pjw/view/productList/jsp/main.jsp";	
-		} else if (action.equals("productlistbycategory")) {
+		if (action.equals("mainPage")) {
+			requestUrl = "/member/pjw/view/productList/jsp/mainPage.jsp";	
+		} else if (action.equals("productlistbycategoryPage")) {
 			requestUrl = "/member/pjw/view/productList/jsp/categoryListPage.jsp";
-		} else if (action.equals("productlistbykeyword")) {
+		} else if (action.equals("productlistbykeywordPage")) {
 			requestUrl = "/member/pjw/view/productList/jsp/searchByKeywordPage.jsp";
-		} else if (action.equals("productListItemSelectNew")) {
+		} else if (action.equals("productListItemSelectNewJson")) {
 			requestUrl = "/member/pjw/view/productList/jsp/response_json_productList.jsp";
-		} else if (action.equals("productListItemSelectPop")) {
+		} else if (action.equals("productListItemSelectPopJson")) {
 			requestUrl = "/member/pjw/view/productList/jsp/response_json_productList.jsp";
 		}
 		

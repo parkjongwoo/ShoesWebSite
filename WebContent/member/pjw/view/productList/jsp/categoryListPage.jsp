@@ -67,31 +67,31 @@
 			<div class="collapse navbar-collapse" id="navbarsExample04">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item <%-- active--%>">
-						<a class="nav-link" href="productlistbycategory?cid=1">농구화<span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="productlistbycategoryPage?cid=1">농구화<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategory?cid=2">축구화</a>
+						<a class="nav-link" href="productlistbycategoryPage?cid=2">축구화</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategory?cid=3">테니스화</a>
+						<a class="nav-link" href="productlistbycategoryPage?cid=3">테니스화</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategory?cid=4">골프화</a>
+						<a class="nav-link" href="productlistbycategoryPage?cid=4">골프화</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategory?cid=5">아웃도어</a>
+						<a class="nav-link" href="productlistbycategoryPage?cid=5">아웃도어</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategory?cid=6">라이프스타일</a>
+						<a class="nav-link" href="productlistbycategoryPage?cid=6">라이프스타일</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategory?cid=7">런닝화</a>
+						<a class="nav-link" href="productlistbycategoryPage?cid=7">런닝화</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategory?cid=8">트레이닝</a>
+						<a class="nav-link" href="productlistbycategoryPage?cid=8">트레이닝</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategory?cid=9">샌들&슬리퍼</a>
+						<a class="nav-link" href="productlistbycategoryPage?cid=9">샌들&슬리퍼</a>
 					</li>
 					<%--<li class="nav-item">
 						<a class="nav-link disabled" href="#">Disabled</a>
@@ -107,7 +107,7 @@
 						</div>
 					</li> --%>
 				</ul>
-				<form class="form-inline my-2 my-md-0" action="productlistbykeyword">
+				<form class="form-inline my-2 my-md-0" action="productlistbykeywordPage">
 					<input id="input_search" class="form-control" type="text" placeholder="Search" name="keyword">
 				</form>
 			</div>
