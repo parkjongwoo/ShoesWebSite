@@ -15,9 +15,9 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css"
-	href="member/pjw/view/productList/css/header_nav.css">
+	href="member/pjw/view/deal/css/header_nav.css">
 <link rel="stylesheet" type="text/css"
-	href="member/pjw/view/productList/css/common.css">
+	href="member/pjw/view/deal/css/common.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -29,6 +29,22 @@
 <script type="text/javascript"
 	src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 
+<script type="text/javascript">
+	var basketData;
+	$(document).ready(function() {
+// 		$.get("basketListJson", null, function(data) {
+// 			console.log(data.list);
+// 			basketData=data.list;
+// 			$("#itemTemplate").tmpl(data.list).appendTo("#tableBody");
+// 			updateTotalCharge();
+// 		});
+
+		$("#go_home").on("click", function(){
+			location.href = "mainPage";
+		})
+	});
+	
+</script>
 </head>
 <body>
 	<div class="container">
@@ -66,33 +82,25 @@
 
 			<div class="collapse navbar-collapse" id="navbarsExample04">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item <%-- active--%>">
-						<a class="nav-link" href="productlistbycategoryPage?cid=1">농구화<span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategoryPage?cid=2">축구화</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategoryPage?cid=3">테니스화</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategoryPage?cid=4">골프화</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategoryPage?cid=5">아웃도어</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategoryPage?cid=6">라이프스타일</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategoryPage?cid=7">런닝화</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategoryPage?cid=8">트레이닝</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="productlistbycategoryPage?cid=9">샌들&슬리퍼</a>
-					</li>
+					<li class="nav-item <%-- active--%>"><a class="nav-link"
+						href="productlistbycategoryPage?cid=1">농구화<span
+							class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="productlistbycategoryPage?cid=2">축구화</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="productlistbycategoryPage?cid=3">테니스화</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="productlistbycategoryPage?cid=4">골프화</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="productlistbycategoryPage?cid=5">아웃도어</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="productlistbycategoryPage?cid=6">라이프스타일</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="productlistbycategoryPage?cid=7">런닝화</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="productlistbycategoryPage?cid=8">트레이닝</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="productlistbycategoryPage?cid=9">샌들&슬리퍼</a></li>
 					<%--<li class="nav-item">
 						<a class="nav-link disabled" href="#">Disabled</a>
 					</li>
@@ -107,8 +115,10 @@
 						</div>
 					</li> --%>
 				</ul>
-				<form class="form-inline my-2 my-md-0" action="productlistbykeywordPage">
-					<input id="input_search" class="form-control" type="text" placeholder="Search" name="keyword">
+				<form class="form-inline my-2 my-md-0"
+					action="productlistbykeywordPage">
+					<input id="input_search" class="form-control" type="text"
+						placeholder="Search" name="keyword">
 				</form>
 			</div>
 		</div>
@@ -116,22 +126,10 @@
 	<main role="main">
 	<div class="album py-5 bg-light">
 		<div class="container">
-			<h2 class="text-center">"${keyword}" 검색결과 </h2>
-			<hr class="no-tb-m hr-b-2">
-			<div class="row">	
-				<c:if test="${empty productList}"><h4 class="mt-3 col-12 text-center">관련상품이 없습니다.</h4></c:if>			
-				<c:forEach var="item" items="${productList}" varStatus="s">
-					<div class="col-md-4" onclick="location.href='product_page?target_pid=${item.pid}'">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top" src="${item.pimgurl}" alt="Card image cap">
-							<div class="card-body">
-								<h5 class="card-text text-center">${item.pname}</h5>
-								<p class="card-text text-center">${item.cname}</p>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
+			<h2 class="text-center">거래가 완료되었습니다.</h2>
+			<hr class="no-tb-m hr-b-2">			
+			<p class="text-center">고객님의 소중한 물품을 안전하게 배송하도록 하겠습니다.</p>
+			<button id="go_home" type="button" class="btn btn-primary col-md">쇼핑몰 메인으로 이동</button>
 		</div>
 	</div>
 	</main>

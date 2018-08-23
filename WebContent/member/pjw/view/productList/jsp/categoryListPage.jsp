@@ -36,7 +36,7 @@
 			<div
 				class="row flex-nowrap justify-content-between align-items-center">
 				<div class="col-4 pt-1">
-					<a class="text-muted" href="#">Subscribe</a>
+					<a class="text-muted" href="mainPage">Home</a>
 				</div>
 				<div class="col-4 text-center">
 					<a class="blog-header-logo text-dark" href="#">Large</a>
@@ -121,7 +121,7 @@
 			<div class="row">
 				<c:if test="${empty productList}"><h4 class="mt-3 col-12 text-center">관련상품이 없습니다.</h4></c:if>
 				<c:forEach var="item" items="${productList}" varStatus="s">
-					<div class="col-md-4">
+					<div class="col-md-4" onclick="location.href='product_page?target_pid=${item.pid}'">
 						<div class="card mb-4 shadow-sm">
 							<img class="card-img-top" src="${item.pimgurl}" alt="Card image cap">
 							<div class="card-body">

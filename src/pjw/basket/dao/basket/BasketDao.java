@@ -10,6 +10,7 @@ public interface BasketDao {
 	
 	boolean insert(Basket basket);
 	boolean update(Basket basket);
+	boolean update(BasketListItem basketListItem);
 	boolean deleteByPid(String mid, int pid);
 	boolean clearBasketByMid(String mid);	
 }

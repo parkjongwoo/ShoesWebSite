@@ -3,14 +3,16 @@ package pjw.basket.model;
 import java.sql.Date;
 
 public class Basket {
-	private int mid;
+	private static final long serialVersionUID = 5159424749082165479L;
+	private String mid;
 	private int pid;
 	private int bquantity;
 	private Date bdate;
-	public int getMid() {
+	
+	public String getMid() {
 		return mid;
 	}
-	public void setMid(int mid) {
+	public void setMid(String mid) {
 		this.mid = mid;
 	}
 	public int getPid() {

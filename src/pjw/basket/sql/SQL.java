@@ -4,7 +4,7 @@ public class SQL {
 	public static final String BASKET_INSERT = "INSERT INTO S_BASKET VALUES(?, ?, ?, SYSDATE)";
 	
 	public static final String BASKET_SELECT_ALL = 
-			"SELECT P.PID, P.PNAME, B.BQUANTITY, P.PDCHARGE, P.PPRICE " + 
+			"SELECT B.MID, P.PID, P.PNAME, B.BQUANTITY, P.PDCHARGE, P.PPRICE " + 
 			"FROM (SELECT * FROM S_BASKET WHERE MID=?) B " + 
 			"INNER JOIN S_PRODUCT P ON B.PID=P.PID";
 	

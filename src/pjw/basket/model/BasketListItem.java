@@ -1,10 +1,23 @@
 package pjw.basket.model;
+
+import java.sql.Date;
+
 public class BasketListItem {
+	private static final long serialVersionUID = 5159424749082165460L;
+	private String mid;
 	private int pid;
 	private String pname;
 	private int bquantity;
 	private int pdcharge;
 	private int pprice;
+	private Date bdate;
+	
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
 	public int getPid() {
 		return pid;
 	}
@@ -34,6 +47,12 @@ public class BasketListItem {
 	}
 	public void setPprice(int pprice) {
 		this.pprice = pprice;
+	}
+	public Date getBdate() {
+		return bdate;
+	}
+	public void setBdate(Date bdate) {
+		this.bdate = bdate;
 	}
 	
 }

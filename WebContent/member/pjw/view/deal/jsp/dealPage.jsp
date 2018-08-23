@@ -15,9 +15,9 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css"
-	href="member/pjw/view/basket/css/header_nav.css">
+	href="member/pjw/view/deal/css/header_nav.css">
 <link rel="stylesheet" type="text/css"
-	href="member/pjw/view/basket/css/common.css">
+	href="member/pjw/view/deal/css/common.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -34,71 +34,52 @@
 	<td>\${pname}</td>
 	<td>
 		<input class="pamount" type="text" value="\${bquantity}">
-		<button class="btn btn-secondary btn-sm btn_change_pamount" type="button">변경</button>
+		<input class="btn_change_pamount" type="button" value="변경">
 	</td>
 	<td>
 		<p><span class="pdcharge">\${pdcharge}</span>원 주문시결제</p>
 	</td>
 	<td><span class="pprice">\${pprice}</span>원</td>
-	<td><button class="btn btn-secondary btn-sm btn_delete" type="button">삭제</button></td>							
+	<td><input class="btn_delete" type="button" value="삭제"></td>							
 </tr>
 </script>
 <script type="text/javascript">
-	var basketList;
+	var basketData;
 	$(document).ready(function() {
-		$.get("basketListJson", null, function(data) {
-			console.log(data.list);
-			basketList=data.list;
-			$("#itemTemplate").tmpl(data.list).appendTo("#tableBody");
-			updateTotalCharge();
+// 		$.get("basketListJson", null, function(data) {
+// 			console.log(data.list);
+// 			basketData = data.list;
+// 			$("#itemTemplate").tmpl(data.list).appendTo("#tableBody");
+// 			updateTotalCharge();
+// 		});
+
+		$("#go_deal").on("click", function(){
+			location.href = "dealInsert";
 		});
-		
-		$("#tableBody").on("click","button.btn_change_pamount",function(){
-			console.log("수량변경클릭:"+$(".btn_change_pamount").index(this));
-			var idx = $(".btn_change_pamount").index(this);
-			
-		});		
-		
-		$("#tableBody").on("click","button.btn_delete",function(){
-			var idx = $(".btn_delete").index(this);			
-			
-			$.post("basketDeleteJson", {"pid":basketList[idx].pid,"mid":basketList[idx].mid,"idx":idx}, function(data) {
-				var msg = data.result?"변경되었습니다.":"변경실패하였습니다.";
-				alert(msg);
-			});
-			
-			basketList.splice(idx,1);
-			console.log(basketList);
-			updateTotalCharge();
-			$(this).parent().parent().remove();						
-		});
-		
-		$("#deal_all").on("click",function(){
-			console.log("전체 주문 클릭:");
-			location.href = "product_buy";
+		$("#cancel_deal").on("click", function(){
+			location.href = "main";
 		});
 	});
-	
-	function updateTotalCharge(){
+	function updateTotalCharge() {
 		var tot = getTotalPrice();
 		var dc = getDcharge();
 		$("#total").html(tot);
 		$("#dcharge").html(dc);
-		$("#ptotal").html(tot+dc);
+		$("#ptotal").html(tot + dc);
 	}
-	function getTotalPrice(){
+	function getTotalPrice() {
 		var result = 0;
-		$(basketList).each(function(idx,item){
-			result+=Number(item.pprice);
+		$(basketData).each(function(idx, item) {
+			result += Number(item.pprice);
 		});
 		return result;
 	}
-	function getDcharge(){
+	function getDcharge() {
 		var result = 0;
-		$(basketList).each(function(idx,item){
-			if(result<item.pdcharge){
-				result=Number(item.pdcharge);
-			}			
+		$(basketData).each(function(idx, item) {
+			if (result < item.pdcharge) {
+				result = Number(item.pdcharge);
+			}
 		});
 		return result;
 	}
@@ -184,47 +165,125 @@
 	<main role="main">
 	<div class="album py-5 bg-light">
 		<div class="container">
-			<h2 class="text-center">장바구니</h2>
+			<h2 class="text-center">주문결제</h2>
 			<hr class="no-tb-m hr-b-2">
 			<div class="table-responsive">
-				<form id="basketListForm" action="">
+				<form id="dealListForm" action="">
+					<br>
+					<h5 class="text-left">상품목록</h5>
 					<table class="table table-bordered table-sm">
 						<thead class="thead-light">
 							<tr>
-								<th><input id="checkall" type="checkbox"></th>
 								<th>상품명</th>
 								<th>수량</th>
 								<th>배송비</th>
 								<th>판매가격</th>
-								<th>삭제</th>
 							</tr>
 						</thead>
-						<tbody id="tableBody"></tbody>
+						<tbody id="tableBody">
+						<c:forEach var="item" items="${basketList}" varStatus="s" begin="0">
+							<tr>
+								<td>${item.pname}</td>
+								<td><span class="pamount">${item.bquantity}</span></td> 
+								<td><span class="pdcharge">${item.pdcharge}</span>원 주문시결제</td>
+								<td><span class="pprice">${item.pprice}</span>원</td>
+							</tr>						
+						</c:forEach>
+						</tbody>
 						<tfoot class="thead-light">
 							<tr>
-								<th colspan="3" rowspan="3">총 구매금액</th>
+								<th colspan="2" rowspan="3">총 구매금액</th>
 								<th>총상품금액</th>
-								<th colspan="2"><span id="total"></span>원</th>
+								<th><span id="total"></span>원</th>
 							</tr>
 							<tr>
 								<th>배송비</th>
-								<th colspan="2"><span id="dcharge"></span>원</th>
+								<th><span id="dcharge"></span>원</th>
 							</tr>
 							<tr>
 								<th>결제금액</th>
-								<th colspan="2"><span id="ptotal"></span>원</th>
+								<th><span id="ptotal"></span>원</th>
 							</tr>
 						</tfoot>
 					</table>
+					<br>
+					<h5 class="text-left">배송정보</h5>
+					<table class="table table-bordered table-sm">
+						<tbody class="thead-light">
+							<tr>
+								<td>이름</td>
+								<td><input type="text" name="name"></td>
+								<td>전화번호</td>
+								<td><input type="text" name="pnum"></td>
+								<td>전화번호2</td>
+								<td><input type="text" name="pnum2"></td>
+							</tr>
+							<tr>
+								<td rowspan="3">주소</td>
+								<td colspan="5">
+									<input type="text" name="zipleft">-
+									<input type="text" name="zipright">
+									<button id="search_addr" type="button">우편번호검색</button>
+								</td>								
+							</tr>
+							<tr>
+								<td colspan="5">
+									<input type="text" name="addr">
+								</td>								
+							</tr>
+							<tr>
+								<td colspan="5">
+									<input type="text" name="addr_detail">
+								</td>								
+							</tr>
+							<tr>
+								<td>배송메세지</td>
+								<td colspan="5">
+									<input type="text" name="dmsg">
+								</td>								
+							</tr>							
+						</tbody>						
+					</table>
+					<br>
+					<h5 class="text-left">결제정보</h5>
+					<table class="table table-bordered table-sm">
+						<tbody class="thead-light">
+							<tr>
+								<td><label><input type="radio" name="dmethod" value="카드결제">카드결제</label></td>
+								<td><label><input type="radio" name="dmethod" value="계좌이체">계좌이체</label></td>								
+							</tr>																					
+							<tr>
+								<td>카드선택</td>
+								<td>
+									<select name="ddcard">
+										<option value="롯데">롯데</option>
+										<option value="BC">BC</option>
+										<option value="삼성">삼성</option>
+									</select>
+								</td>																
+							</tr>
+							<tr>
+								<td>할부기간</td>
+								<td>
+									<select name="installment">
+										<option value="0">일시불</option>
+										<option value="3">3개월</option>
+										<option value="6">6개월</option>
+										<option value="12">12개월</option>
+									</select>
+								</td>							
+							</tr>
+						</tbody>						
+					</table>
+					<br>
+					<h5 class="text-left">구매조건확인</h5>
+					<label><input id="confirm_check" type="checkbox">구매조건 확인 및 결제진행 동의</label>
+					<br><br>
+					<button id="go_deal" type="button" class="btn btn-primary offset-md-3 col-md-2">결제</button>
+					<button id="cancel_deal" type="button" class="btn btn-primary offset-md-1 col-md-2">취소</button>
+					
 				</form>
-			</div>
-			<div class="row">
-				<button id="deal_all" type="button" class="btn btn-primary col-md">전체상품주문</button>&nbsp;
-				<button id="deal_checked" type="button" class="btn btn-primary col-md">선택상품주문</button>&nbsp;
-				<button id="delete_checked" type="button" class="btn btn-primary col-md">선택상품삭제</button>&nbsp;
-				<button id="go_home" type="button" class="btn btn-primary col-md">쇼핑계속하기</button>&nbsp;
-				<button id="clear_basket" type="button" class="btn btn-primary col-md">장바구니비우기</button>
-			</div>
+			</div>			
 		</div>
 	</div>
 	</main>

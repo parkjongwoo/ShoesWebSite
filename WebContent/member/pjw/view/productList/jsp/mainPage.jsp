@@ -29,7 +29,7 @@
 <script type="text/javascript"
 	src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 <script id="itemTemplate" type="text/x-jQuery-tmpl">
-<div class="col-md-4">					
+<div class="col-md-4" onclick="location.href='product_page?target_pid=\${pid}'">					
 <div class="card mb-4 shadow-sm">
 	<img class="card-img-top" src="\${pimgurl}" alt="Card image cap">
 	<div class="card-body">
@@ -57,7 +57,7 @@
 			<div
 				class="row flex-nowrap justify-content-between align-items-center">
 				<div class="col-4 pt-1">
-					<a class="text-muted" href="#">Subscribe</a>
+					<a class="text-muted" href="mainPage">Home</a>
 				</div>
 				<div class="col-4 text-center">
 					<a class="blog-header-logo text-dark" href="#">Large</a>
