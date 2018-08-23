@@ -50,7 +50,24 @@ public class BasketController extends HttpServlet {
 		if (action.equals("product_cart")) {
 			Member m = (Member)request.getSession().getAttribute("member");
 			String mid = m.getMid();
-			List<BasketListItem> list = dao.selectAllItems(mid);
+			String pid = request.getParameter("pid");
+			String quantity = request.getParameter("quantity");
+			List<BasketListItem> list = null;
+			if(pid!=null && quantity!=null) {
+				try {
+					Basket basket = new Basket();
+					basket.setPid(Integer.parseInt(pid));
+					basket.setMid(mid);
+					basket.setBquantity(Integer.parseInt(quantity));
+					list = dao.insertAndSelectAll(basket);
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+					list = dao.selectAllItems(mid);
+				}
+			}else {
+				list = dao.selectAllItems(mid);				
+			}
+			
 			System.out.println(list);
 			request.getSession().setAttribute("basketList", list);
 			
