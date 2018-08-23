@@ -1,8 +1,9 @@
 package pjw.basket.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class BasketListItem {
+public class BasketListItem implements Serializable {
 	private static final long serialVersionUID = 5159424749082165460L;
 	private String mid;
 	private int pid;

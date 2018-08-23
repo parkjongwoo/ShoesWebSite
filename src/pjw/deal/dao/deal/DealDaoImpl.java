@@ -1,4 +1,4 @@
-package pjw.deal.dao.basket;
+package pjw.deal.dao.deal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

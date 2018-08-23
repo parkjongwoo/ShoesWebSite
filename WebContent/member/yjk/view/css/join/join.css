@@ -1,0 +1,13 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/natosanskr.css);
+*{
+	font-family:'Nanum Gothic';
+}
+h2{
+	font-family:'Hanna';
+}
+.btn-info{
+	width: 200px;
+}

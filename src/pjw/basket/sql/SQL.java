@@ -3,6 +3,10 @@ package pjw.basket.sql;
 public class SQL {
 	public static final String BASKET_INSERT = "INSERT INTO S_BASKET VALUES(?, ?, ?, SYSDATE)";
 	
+	public static final String BASKET_SELECT_BY_PID =
+			"SELECT PID, PNAME, PDCHARGE, PPRICE " + 
+			"FROM S_PRODUCT WHERE PID=?";
+	
 	public static final String BASKET_SELECT_ALL = 
 			"SELECT B.MID, P.PID, P.PNAME, B.BQUANTITY, P.PDCHARGE, P.PPRICE " + 
 			"FROM (SELECT * FROM S_BASKET WHERE MID=?) B " + 

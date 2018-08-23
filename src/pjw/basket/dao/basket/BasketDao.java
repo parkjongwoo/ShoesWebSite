@@ -6,6 +6,8 @@ import pjw.basket.model.Basket;
 import pjw.basket.model.BasketListItem;
 
 public interface BasketDao {
+	List<BasketListItem> selectByPid(String mid,int quantity,int pid);
+	
 	List<BasketListItem> selectAllItems(String mid);
 	
 	boolean insert(Basket basket);
