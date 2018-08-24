@@ -19,7 +19,7 @@
 			<a class="p-1 text-dark" href="/ShoesWebSite/mypage_request">마이페이지</a>
 		</c:if>	
 		<a class="p-1 text-dark" href="product_cart">장바구니</a>
-		<a class="p-1 text-dark" href="qna_search">고객센터</a>       
+		<a class="p-1 text-dark" href="NoticeSelectAll">고객센터</a>
       </nav>
     </div>
 </div>

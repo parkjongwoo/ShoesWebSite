@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css"
 	href="member/jjh/css/header_nav.css">
 <link rel="stylesheet" type="text/css" href="member/jjh/css/common.css">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- script -->
 <jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
 
@@ -46,7 +46,7 @@
 				<tr>
 
 					<td>${qnalist.rn}</td>
-					<td><a href="qna_action?qid=${qnalist.qid}">${qnalist.qtitle}</a></td>
+					<td><a href="qna_action?qid=${qnalist.qid}&qname=${qnalist.qname}">${qnalist.qtitle}</a></td>
 					<td>${qnalist.qname}</td>
 					<td>${qnalist.qdate}</td>
 					<td>${qnalist.qhit}</td>

@@ -33,13 +33,12 @@ public class QnaDaoImpl extends BaseDao implements QnaDao{
 		try {
 			
 			con = getConnection();
-			String sql = "insert into s_qna values(seq_ss_qna_qid.nextval,?,?,sysdate,?,?,?)";
+			String sql = "insert into s_qna values(seq_ss_qna_qid.nextval,?,?,sysdate,?,null,?)";
 			st = con.prepareStatement(sql);
 			st.setString(1, qna.getQtitle());
 			st.setString(2, qna.getQcontent());
 			st.setInt(3, 0);
-			st.setInt(4, 0);
-			st.setString(5, qna.getMid());
+			st.setString(4, qna.getMid());
 			
 			int flag = st.executeUpdate();
 			if(flag>0) {
@@ -171,13 +170,14 @@ public class QnaDaoImpl extends BaseDao implements QnaDao{
 
 			return qnalist;
 		}
+		 
 		public Qna_model detail(int qid){
 			Connection con = null;
 			PreparedStatement st = null;
 			ResultSet rs = null;
 			Qna_model qna = new Qna_model();	
 			try {
-				String sql = "select * from s_qna where qid=?";
+				String sql = "select *from s_qna where qid=?";
 				con = getConnection();
 				st = con.prepareStatement(sql);
 				st.setInt(1, qid);
@@ -190,7 +190,6 @@ public class QnaDaoImpl extends BaseDao implements QnaDao{
 					qna.setQhit(rs.getInt("QHIT"));
 					qna.setQparent(rs.getString("QPARENT"));
 					qna.setMid(rs.getString("MID"));
-					qna.setQname(rs.getString("MNAME"));
 				}
 			} catch (SQLException e) {
 				System.out.println("detail문 실패 : " + e.getMessage());

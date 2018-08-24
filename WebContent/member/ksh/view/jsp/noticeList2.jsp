@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charse¤±t=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charseã…t=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,14 +18,14 @@
 	<center>
 	<table>
 	<tr align = "center" class="table" style="text-decoreation:none;">
-		<td><a href="NoticeSelectAll" style="text-decoreation:none;"><h5>°øÁö»çÇ×</h5></a></td><td>&nbsp;|&nbsp;</td> <td><a href="qna_search" style="text-decoreation:none;"><h5>1:1¹®ÀÇ</h5></a></td>
+		<td><a href="#" style="text-decoreation:none;"><h5>ê³µì§€ì‚¬í•­</h5></a></td><td>&nbsp;|&nbsp;</td> <td><a href="qna_search" style="text-decoreation:none;"><h5>1:1ë¬¸ì˜</h5></a></td>
 	</tr>
 	</table>
 	<hr/>
 	<table id =notice_list class="table table-hover table-striped" >
-	<h3>°øÁö»çÇ×</h3>
+	<h3>ê³µì§€ì‚¬í•­</h3>
 	<tr>
-		<th>¹øÈ£</th><th>Á¦¸ñ</th><th>ÀÛ¼ºÀÚ</th><th>³¯Â¥</th><th>Á¶È¸¼ö</th>
+		<th>ë²ˆí˜¸</th><th>ì œëª©</th><th>ìž‘ì„±ìž</th><th>ë‚ ì§œ</th><th>ì¡°íšŒìˆ˜</th>
 	</tr>
 	<c:forEach var="noticeVO" items="${list}"  varStatus="status">
 		<tr>
@@ -41,16 +41,10 @@
 	</table>
 	<hr/>
 	
-	<div align="right">
-	<form method="post" action="NoticeInsertGO">
-	<input type="submit" class="btn testBoder" value="±Û¾²±â" >
-	</form>
-	</div>
-	
 	<c:if test="${!empty adminmember }">
 	<div align="right">
 	<form method="post" action="NoticeInsertGO">
-	<input type="submit" class="btn testBoder" value="±Û¾²±â" >
+	<input type="submit" class="btn testBoder" value="ê¸€ì“°ê¸°" >
 	</form>
 	</div>
 		</c:if>
@@ -62,7 +56,7 @@
 
 			<c:if test="${pageGroupResult.beforePage ==true}">
 				<td><a class="btn testBoder"
-					href="NoticeSelectAll?reqPage=${pageGroupResult.selectPageNumber - 1}">[ÀÌÀü]</a>
+					href="NoticeSelectAll?reqPage=${pageGroupResult.selectPageNumber - 1}">ì´ì „</a>
 				</td>
 			</c:if>
 			
@@ -71,7 +65,7 @@
 			</c:forEach>
 			<c:if test="${pageGroupResult.afterPage ==true}">
 				<td><a class="btn testBoder"
-					href="NoticeSelectAll?reqPage=${pageGroupResult.selectPageNumber + 1}">[´ÙÀ½]</a>
+					href="NoticeSelectAll?reqPage=${pageGroupResult.selectPageNumber + 1}">ë‹¤ìŒ</a>
 				</td>
 			</c:if>
 			</c:when>
@@ -80,7 +74,7 @@
 
 			<c:if test="${pageGroupResult.beforePage == true}">
 				<td><a class="btn testBoder"
-					href="NoticeSelect?reqPage=${pageGroupResult.selectPageNumber - 1}&select=${name }">[ÀÌÀü]</a>
+					href="NoticeSelect?reqPage=${pageGroupResult.selectPageNumber - 1}&select=${name }">[ì´ì „]</a>
 				</td>
 			</c:if>
 			
@@ -90,7 +84,7 @@
 			
 			<c:if test="${pageGroupResult.afterPage == true}">
 				<td><a class="btn testBoder"
-					href="NoticeSelect?reqPage=${pageGroupResult.selectPageNumber + 1}&select=${name }">[´ÙÀ½]</a>
+					href="NoticeSelect?reqPage=${pageGroupResult.selectPageNumber + 1}&select=${name }">ë‹¤ìŒ</a>
 				</td>
 			</c:if>
 			
@@ -101,10 +95,10 @@
 	<br/>
 	<form method="get" action="NoticeSelect">
 	<select name="selectName" class="btn">
-	<option>Á¦¸ñ</option>
-	<option value = "selectMid">ÀÛ¼ºÀÚ</option>
+	<option>ì œëª©</option>
+	<option value = "selectMid">ìž‘ì„±ìž</option>
 	</select>
-	<input type="text" name="select" class="btn">&nbsp;<input type="submit" value="°Ë»ö" class = "btn">
+	<input type="text" name="select" class="btn">&nbsp;<input type="submit" value="ê²€ìƒ‰" class = "btn">
 	
 	</form>
 	</div>

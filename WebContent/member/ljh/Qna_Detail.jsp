@@ -32,7 +32,7 @@
 			</tr>
 			<tr>
 				<th scope="row">작성자</th>
-				<td>${qna.qname}</td>
+				<td>${qname}</td>
 				<th scope="row">작성시간</th>
 				<td>${qna.qdate}</td>
 			</tr>

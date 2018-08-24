@@ -1,37 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
+<link rel="stylesheet" type="text/css" href="member/ksh/view/css/bootstrap.css">
+<jsp:include page="/member/include/jsp/Header.jsp"/>
 	
-	<div style="margin: 200px 200px 70px 200px;">
+	<div style="margin: 70px 200px 70px 200px;">
 		<center>
 	<table>
 	<tr align = "center" class="table">
-		<td><a href="NoticeSelectAll" style="text-decoreation:none;"><h5>°øÁö»çÇ×</h5></a></td> <td><a href="qna_search" style="text-decoreation:none;"><h5>1:1¹®ÀÇ</h5></a></td>
+		<td><a href="#" style="text-decoreation:none;"><h5>ê³µì§€ì‚¬í•­</h5></a></td><td>&nbsp;|&nbsp;</td> <td><a href="qna_search" style="text-decoreation:none;"><h5>1:1ë¬¸ì˜</h5></a></td>
 	</tr>
 	</table>
 	<hr/>
 		<form method="post" action="NoticeInsert ">
 		<table class="table table-striped">
 			<tr align="center">
-				<th colspan="2">°øÁö»çÇ× µî·Ï</th>
+				<th colspan="2">ê³µì§€ì‚¬í•­ ë“±ë¡</th>
 			</tr>
 			<tr align="center">
-				<td><input type="text" name="mid" size="20" style="margin-left: -350px;" placeholder="ÀÛ¼ºÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä"/><br><br>
-				<input name="ntitle" size="20" style="margin-left: -350px;"placeholder="±ÛÁ¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä" /><br><br>
-				<textarea  name="ncontent" cols="70" rows="10" placeholder="³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä"></textarea></td>
+				<td><!-- <input type="text" name="mid" size="20" style="margin-left: -350px;" placeholder="ì‘ì„±ìë¥¼ ì…ë ¥í•˜ì„¸ìš”"/><br><br>-->
+				<input name="ntitle" size="20" style="margin-left: -350px;"placeholder="ê¸€ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”" /><br><br>
+				<textarea  name="ncontent" cols="70" rows="10" placeholder="ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”"></textarea></td>
 			</tr>
 		</table>
 		<c:if test="${!empty adminmember }">
-		<input type="submit" class="btn testBoder" value="°Ô½Ã¹° µî·Ï"/>
+		<input type="submit" class="btn testBoder" value="ê²Œì‹œë¬¼ ë“±ë¡"/>
 		</c:if>
-		<input type="submit" class="btn testBoder" value="°Ô½Ã¹° µî·Ï"/>
 		</form>
 		<br/>
 	</div>

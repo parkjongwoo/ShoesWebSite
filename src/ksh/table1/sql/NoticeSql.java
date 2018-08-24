@@ -10,4 +10,5 @@ public class NoticeSql {
 	public static final String SELECT_PAGE_SQL = "select rownum rn, nid, ntitle, ncontent, ndate, nhit, mid from(select rownum rn, s_qnas.* from(select * from s_notice order by nid desc)s_qnas) where rn between ? and ?";
 	public static final String SELECT_SQL = "select * from (select rownum rn, s_notices.* from(select * from s_notice order by nid desc)s_notices where ntitle like ?) noticeSelect where rn between ? and ?";
 	public static final String SELECT_MID_SQL = "select * from (select rownum rn, s_notices.* from(select * from s_notice order by nid desc)s_notices where mid like ?) noticeSelect where rn between ? and ?";
+	
 }

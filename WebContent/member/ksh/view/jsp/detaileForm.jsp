@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title><base>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js" ></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -22,8 +22,8 @@ $(function() {
 		dataType:"text",
 		timeout : 30000,
 		cache:false,
-        async:true, //±âº»°ªÀº true
-		success:function(data){	// ¼º°ø
+        async:true, //ê¸°ë³¸ê°’ì€ true
+		success:function(data){	// ì„±ê³µ
 			$(function() {
 			input_val = ${nid};
 			var url = "NoticeCountNhit";
@@ -32,7 +32,7 @@ $(function() {
 				$("#nhit").html(result_text);
 			});
 		});
-		}, error:function(xhr, textStatus, errorThrown){ // ½ÇÆĞ
+		}, error:function(xhr, textStatus, errorThrown){ // ì‹¤íŒ¨
 			$("#nhit").html("xhr : " + xhr + "textStatus :"+textStatus + "errorThrown : " + errorThrown);
 		}
 	});
@@ -42,21 +42,21 @@ $(function() {
 
 </head>
 <body>
-<jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
-	<div style="margin: 200px 200px 200px 200px;">
+<jsp:include page="/member/include/jsp/Header.jsp"/>
+	<div style="margin: 70px 200px 70px 200px;">
 	<center>
 	<table>
 	<tr align = "center" class="table">
-		<td><a href="#" style="text-decoreation:none;"><h5>°øÁö»çÇ×</h5></a></td> <td><a href="qna_search" style="text-decoreation:none;"><h5>1:1¹®ÀÇ</h5></a></td>
+		<td><a href="#" style="text-decoreation:none;"><h5>ê³µì§€ì‚¬í•­</h5></a></td><td>&nbsp;|&nbsp;</td> <td><a href="qna_search" style="text-decoreation:none;"><h5>1:1ë¬¸ì˜</h5></a></td>
 	</tr>
 	</table>
 	<hr/>
 	
 	<table id =notice_list class="table table-striped" >
-	<h3>°øÁö»çÇ×</h3>
+	<h3>ê³µì§€ì‚¬í•­</h3>
 	<table 	class="table table-striped">
 	<tr align="center">
-		<th>¹øÈ£</th><th>Á¦¸ñ</th><th>ÀÛ¼ºÀÚ</th><th>³¯Â¥</th><th>Á¶È¸¼ö</th>
+		<th>ë²ˆí˜¸</th><th>ì œëª©</th><th>ì‘ì„±ì</th><th>ë‚ ì§œ</th><th>ì¡°íšŒìˆ˜</th>
 	</tr>
 	<tr align = "center">
 		<td>${nid }</td><td>${ntitle }</td><td>${mid }</td><td>${ndate }</td><td><div id="nhit"></div></td>
@@ -68,17 +68,13 @@ $(function() {
 	</div>
 	 <hr>
 	 <c:if test="${!empty adminmember }">
-	<a class = "btn testBoder" href ="NoticeUpdateGO?nid=${nid }&mid=${mid }"> ¼öÁ¤ </a>
+	<a class = "btn testBoder" href ="NoticeUpdateGO?nid=${nid }&mid=${mid }"> ìˆ˜ì • </a>
 	
-	<a class = "btn testBoder" href ="NoticeDelete?nid=${nid }&mid=${mid }"> »èÁ¦ </a> 
+	<a class = "btn testBoder" href ="NoticeDelete?nid=${nid }&mid=${mid }"> ì‚­ì œ </a> 
 	
-	<a class = "btn testBoder" href ="NoticeSelectAll"> ¸ñ·Ï </a>
+	<a class = "btn testBoder" href ="NoticeSelectAll"> ëª©ë¡ </a>
 		</c:if>
-		<a class = "btn testBoder" href ="NoticeUpdateGO?nid=${nid }&mid=${mid }"> ¼öÁ¤ </a>
 	
-	<a class = "btn testBoder" href ="NoticeDelete?nid=${nid }&mid=${mid }"> »èÁ¦ </a> 
-	
-	<a class = "btn testBoder" href ="NoticeSelectAll"> ¸ñ·Ï </a>
 	
 	</div>
 	<jsp:include page="/member/include/jsp/Footer.jsp"/>

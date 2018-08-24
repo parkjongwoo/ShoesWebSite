@@ -38,8 +38,8 @@ public class QnaController extends HttpServlet {
 	}
 
 	private void prosess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+
+
 		request.setCharacterEncoding("utf-8");
 		String url = request.getRequestURI(); //url
 		int lastIndex = url.lastIndexOf("/");  //url/
@@ -85,12 +85,16 @@ public class QnaController extends HttpServlet {
 		}else if(action.equals("qna_search")) {
 			int requestPage = 1;
 			try {
-				requestPage = Integer.parseInt(request.getParameter("reqPage"));
-				System.out.println(requestPage);
+				
+				if(request.getParameter("reqPage") != null) {
+					requestPage = Integer.parseInt(request.getParameter("reqPage"));
+				}
+				
+
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			}
-			
+
 			QnaDao qnadao = new QnaDaoImpl();
 			List<Qna_model> qnalist = qnadao.select(requestPage);
 			PageManager pageManager = new PageManager(requestPage);
@@ -102,18 +106,21 @@ public class QnaController extends HttpServlet {
 			request.setAttribute("qnalist", qnalist);
 		}else if(action.equals("qna_action")) {
 			int qid = Integer.parseInt(request.getParameter("qid"));
+			String qname = request.getParameter("qname");
 			QnaDao qnadao = new QnaDaoImpl();
 			qnadao.updatecount(qid);
 			Qna_model qna = qnadao.detail(qid);
-
 			request.setAttribute("qna", qna);
+			request.setAttribute("qname", qname);
 		}
 
 		else if(action.equals("qna_up")) {
 			int qid = Integer.parseInt(request.getParameter("qid"));
+
 			QnaDao qnadao = new QnaDaoImpl();
 			Qna_model qna = qnadao.detail(qid);
 			request.setAttribute("qna", qna);
+			
 		}
 
 

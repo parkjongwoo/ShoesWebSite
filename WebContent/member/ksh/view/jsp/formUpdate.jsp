@@ -1,39 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="member/ksh/view/css/bootstrap.css">
 </head>
 <body>
-<jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
+<jsp:include page="/member/include/jsp/Header.jsp"/>
 	
-	<div style="margin: 200px 200px 200px 200px;">
+	<div style="margin: 70px 200px 70px 200px;">
 	<center>
 	<table>
 	<tr align = "center" class="table">
-		<td><a href="NoticeSelectAll" style="text-decoreation:none;"><h5>°øÁö»çÇ×</h5></a></td> <td><a href="qna_search" style="text-decoreation:none;"><h5>1:1¹®ÀÇ</h5></a></td>
+		<td><a href="#" style="text-decoreation:none;"><h5>ê³µì§€ì‚¬í•­</h5></a></td><td>&nbsp;|&nbsp;</td> <td><a href="qna_search" style="text-decoreation:none;"><h5>1:1ë¬¸ì˜</h5></a></td>
 	</tr>
 	</table>
 	<hr/>
 		<form method="post" action="NoticeUpdate">
 		<table  class="table table-striped">
 			<tr align="center">
-				<th colspan="2">°øÁö»çÇ× </th>
+				<th colspan="2">
+				ê³µì§€ì‚¬í•­					
+				</th>
 			</tr>
 			<tr align="center">
-				<td ><div style="margin-left: -130px;"><input size="50" name="ntitle" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä." /><input type="hidden" name="nid" value="${nid }" > </div><br/>
-				<textarea name="ncontent" placeholder="³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä" cols="70" rows="10"></textarea><input type="hidden" name="mid" value="${mid }"></td>
+				<td ><div style="margin-left: -130px;"><input size="50" name="ntitle" placeholder="ì œëª©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”." /><input type="hidden" name="nid" value="${nid }" > </div><br/>
+				<textarea name="ncontent" placeholder="ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”" cols="70" rows="10"></textarea><input type="hidden" name="mid" value="${mid }"></td>
 			</tr>
 		</table>
 		<hr>
 		<c:if test="${!empty adminmember }">
-		<input class ="btn testBoder" type="submit" value="°Ô½Ã¹° ¼öÁ¤"/>  <a href="javascript:history.go(-1)" class ="btn testBoder">Ãë¼Ò</a>
+		<input class ="btn testBoder" type="submit" value="ê²Œì‹œë¬¼ ìˆ˜ì •"/>  <a href="javascript:history.go(-1)" class ="btn testBoder">ì·¨ì†Œ</a>
 		</c:if>
-		<input class ="btn testBoder" type="submit" value="°Ô½Ã¹° ¼öÁ¤"/>  <a href="javascript:history.go(-1)" class ="btn testBoder">Ãë¼Ò</a>
 		</form>
 		
 		
