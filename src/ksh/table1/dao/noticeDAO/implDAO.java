@@ -14,20 +14,6 @@ import ksh.table1.sql.NoticeSql;
 import ksh.table1.vo.NoticeVO;
 
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import ksh.table1.dao.BaseDAO;
-import ksh.table1.dao.DAO;
-import ksh.table1.model.page.PageRowResult;
-import ksh.table1.service.PageManager;
-import ksh.table1.sql.NoticeSql;
-import ksh.table1.vo.NoticeVO;
-
-
 public class implDAO extends BaseDAO implements DAO {
    boolean onOff = false;
 
@@ -238,7 +224,6 @@ public class implDAO extends BaseDAO implements DAO {
 
         return list;
    }
-}
 
 
 
@@ -435,3 +420,4 @@ public class implDAO extends BaseDAO implements DAO {
 
 
    
+}
