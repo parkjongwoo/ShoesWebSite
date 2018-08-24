@@ -7,12 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import common.Oracle_Info;
+
 public class BaseDao implements Dao {
 
 	@Override
 	public Connection getConnection() {
 		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";		
+//		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+		String url = Oracle_Info.DB_URL;
 		String userName = "scott";
 		String pw = "tiger";
 		
