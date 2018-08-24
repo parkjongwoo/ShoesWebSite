@@ -23,6 +23,7 @@ import jjh.s_qna.model.S_Qna;
 import jjh.service.page.PageGroupResult;
 import jjh.service.page.PageManager;
 import jjh.service.sql.PagingSql;
+import yjk.join.model.Member;
 
 
 
@@ -71,7 +72,7 @@ public class Admin_Controller extends HttpServlet {
 			try {
 				requestPage = Integer.parseInt(request.getParameter("reqPage"));
 			} catch (NumberFormatException e) {
-				e.printStackTrace();
+				System.out.println("error:"+e.getMessage());
 			}
 			// QNA 불러오기
 			S_P_QnaImpl qnaImpl = new S_P_QnaImpl();
@@ -87,7 +88,7 @@ public class Admin_Controller extends HttpServlet {
 		}else if(action.equals("admin_answerComment")) {
 			// 세션에서 사용자 객체 가져오기
 			HttpSession session = request.getSession();
-			//Member member = session.getAttribute("member");
+			Member member = (Member)session.getAttribute("member");
 			int qid = Integer.parseInt(request.getParameter("qid"));
 			int pid = Integer.parseInt(request.getParameter("pid"));
 			String pretitle = request.getParameter("pretitle");
@@ -96,8 +97,8 @@ public class Admin_Controller extends HttpServlet {
 			qna.setQtitle("RE : "+pretitle);
 			qna.setQcontent(qcontent);
 		
-			qna.setMid("shoong1999@gmail.com");
-			//qna.setMid(member.getMid());
+			//qna.setMid("shoong1999@gmail.com");
+			qna.setMid(member.getMid());
 			qna.setQparent(qid);
 			qna.setPid(pid);
 			S_P_QnaImpl qnaImpl = new S_P_QnaImpl();
@@ -124,12 +125,14 @@ public class Admin_Controller extends HttpServlet {
 			String preTitle = request.getParameter("pretitle");
 			String title = "RE : " + preTitle;
 			S_QnaImpl qnaImpl = new S_QnaImpl();
-			
+			HttpSession session = request.getSession();
+			Member member = (Member)session.getAttribute("member");
 			S_Qna qna = new S_Qna();
 			qna.setQcontent(request.getParameter("qcontent"));
 			qna.setQparent(qid);
 			qna.setQtitle(title);
-			qna.setMid("shoong1999@gmail.com");
+			qna.setMid(member.getMid());
+		//	qna.setMid("shoong1999@gmail.com");
 	
 			qnaImpl.answerQna(qna);
 			

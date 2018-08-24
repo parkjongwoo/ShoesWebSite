@@ -169,9 +169,16 @@ public class BasketDaoImpl extends BaseDao implements BasketDao {
 				item.setPprice(rs.getInt(6));		
 				list.add(item);
 			}
+			con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		} finally {
+			
 			closeDBObjects(rs, ps, con);
 		}
 		return list;

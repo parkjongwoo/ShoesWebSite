@@ -17,7 +17,7 @@ import javax.servlet.http.Part;
  * Servlet implementation class SingleUpload
  */
 @WebServlet(name = "singleUpload", urlPatterns = { "/singleUpload" })
-@MultipartConfig(fileSizeThreshold=1024*1024*2,maxFileSize=1024*1024*50, maxRequestSize=1024*1024*50,location="D:\\java\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ShoesWebSite\\img") 
+@MultipartConfig(fileSizeThreshold=1024*1024*2,maxFileSize=1024*1024*50, maxRequestSize=1024*1024*50,location="D:\\heroku\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ShoesWebSite\\img") 
 //file 관련 처리를 수행하는 서블릿임을 알림.
 //fileSizeThreshold: 파일을 임시저장하는 사이즈 크기 제한. 지정한 값 이상 전송되면 저장이 시작된다.기본값0
 //maxFileSize: 파일 최대 사이즈. 넘어가면 예외발생.기본값-1(크기제한 없음)
@@ -65,7 +65,8 @@ public class ImageController extends HttpServlet {
 //		String url = 
 		
 		
-		
+		System.out.println("alt:"+"D:\\java\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ShoesWebSite\\img");
+		System.out.println("realpath:"+getServletContext().getRealPath("/WEB-INF"));
 		if(fileName != null && !fileName.isEmpty()) {
 			filePart.write(
 //					getServletContext().getRealPath("/WEB-INF")+"/"+fileName);

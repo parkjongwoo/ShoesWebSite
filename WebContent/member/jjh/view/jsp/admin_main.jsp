@@ -86,7 +86,7 @@
 				</table>
 		</div>
 		
-		<a href="/ShoesWebSite/productForm"><h2>상품 등록하러 가기</h2></a>
+		<a href="admin_productForm"><h2>상품 등록하러 가기</h2></a>
 	</main>
 	<jsp:include page="/member/include/jsp/Footer.jsp"/> 
 </body>

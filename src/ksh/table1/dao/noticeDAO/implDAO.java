@@ -57,8 +57,8 @@ public class implDAO extends BaseDAO implements DAO {
            //페이징 처리
            PageManager pageManager = new PageManager(rquestPage);
            PageRowResult pageRowResult = pageManager.getPageRowResult();
-           System.out.println(pageRowResult.getRowStartNumber());
-           System.out.println(pageRowResult.getRowEndNumber());
+//           System.out.println(pageRowResult.getRowStartNumber());
+//           System.out.println(pageRowResult.getRowEndNumber());
            st.setInt(1, pageRowResult.getRowStartNumber());
            st.setInt(2, pageRowResult.getRowEndNumber());
            ResultSet rs = st.executeQuery();  

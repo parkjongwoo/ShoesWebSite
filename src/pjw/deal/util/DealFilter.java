@@ -61,7 +61,7 @@ public class DealFilter implements Filter {
 			pid = Integer.parseInt(pids);
 			quantity = Integer.parseInt(quantitys);
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			System.out.println("error:"+e.getMessage());
 		}
 		
 		Member m = (Member)session.getAttribute("member");

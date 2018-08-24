@@ -178,7 +178,7 @@
 	function getTotalPrice(){
 		var result = 0;
 		$("#tableBody").children().each(function(idx,item){
-			var pprice = Number($(this).attr("data-pprice"));				
+			var pprice = Number($(this).attr("data-pprice")) * Number($(this).attr("data-bquantity"));				
 			result+=Number(pprice);
 		});
 		return result;

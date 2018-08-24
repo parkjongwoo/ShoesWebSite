@@ -68,8 +68,7 @@ public class S_Product_Filter implements Filter {
 
 				}
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("error:"+e.getMessage());
 			}
 
 			request.setAttribute("lastURL", url);

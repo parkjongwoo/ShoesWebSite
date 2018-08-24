@@ -6,6 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>상품 리스트</title>
+<jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
 </head>
 <body>
 	<table>
@@ -49,6 +50,7 @@
 				</td>
 			</c:if>
 		</tr>
-	</table>  
+	</table> 
+	<jsp:include page="/member/include/jsp/Footer.jsp"/>  
 </body>
 </html>

@@ -61,7 +61,7 @@ public class BasketController extends HttpServlet {
 					basket.setBquantity(Integer.parseInt(quantity));
 					list = dao.insertAndSelectAll(basket);
 				} catch (NumberFormatException e) {
-					e.printStackTrace();
+					System.out.println("error:"+e.getMessage());
 					list = dao.selectAllItems(mid);
 				}
 			}else {
@@ -91,7 +91,7 @@ public class BasketController extends HttpServlet {
 				basket.setPid(Integer.parseInt(pid));
 				result = dao.insert(basket);
 			} catch (NumberFormatException e) {
-				e.printStackTrace();
+				System.out.println("error:"+e.getMessage());
 			}
 			request.setAttribute("result", result);
 			
@@ -111,7 +111,7 @@ public class BasketController extends HttpServlet {
 					}
 					result = dao.deleteByPid(mid, Integer.parseInt(pid));
 				} catch (NumberFormatException e) {
-					e.printStackTrace();
+					System.out.println("error:"+e.getMessage());
 				}
 				request.setAttribute("result", result);
 			}
@@ -137,7 +137,7 @@ public class BasketController extends HttpServlet {
 					}
 					result = dao.update(basket);
 				} catch (NumberFormatException e) {
-					e.printStackTrace();
+					System.out.println("error:"+e.getMessage());
 				}
 				request.setAttribute("result", result);
 			}

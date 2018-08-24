@@ -24,8 +24,8 @@ public class PageManager {
 	public static void main(String[] args) {
 		PageManager pm = new PageManager(1);
 		PageGroupResult pageGroupResult = pm.getPageGroupResult("123");
-		System.out.println(pageGroupResult.getGroupStartNumber());
-		System.out.println(pageGroupResult.getGroupEndNumber());
+//		System.out.println(pageGroupResult.getGroupStartNumber());
+//		System.out.println(pageGroupResult.getGroupEndNumber());
 		
 	}
 	public PageGroupResult getPageGroupResult(String sql) {

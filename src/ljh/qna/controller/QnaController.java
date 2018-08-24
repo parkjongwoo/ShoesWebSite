@@ -86,7 +86,7 @@ public class QnaController extends HttpServlet {
 			try {
 				requestPage = Integer.parseInt(request.getParameter("reqPage"));
 			} catch (NumberFormatException e) {
-				e.printStackTrace();
+				System.out.println("error:"+e.getMessage());
 			}
 			
 			QnaDao qnadao = new QnaDaoImpl();
@@ -94,7 +94,7 @@ public class QnaController extends HttpServlet {
 			PageManager pageManager = new PageManager(requestPage);
 			PageGroupResult pageGroupResult = 
 					pageManager.getPageGroupResult(CountSql.MEMO_SELECT_ALL_COUNT_SQL);
-
+			
 
 			request.setAttribute("pageGroupResult", pageGroupResult);
 			request.setAttribute("qnalist", qnalist);

@@ -78,7 +78,7 @@
 			<p>글쓰기</p>
 		</c:when>
 		<c:otherwise>
-			<a href="Qna_Writing.jsp">글쓰기</a>
+			<a href="qna_input">글쓰기</a>
 		</c:otherwise>
 	</c:choose>	
 	</main>

@@ -46,7 +46,7 @@ public class MyPageController extends HttpServlet {
 			String pw = request.getParameter("password").trim();
 			MyPageDao mpd = new MyPageDaoImpl();
 			boolean pck_result = mpd.PasswordCheck(pw);
-			System.out.println(pck_result);
+//			System.out.println(pck_result);
 			if(pck_result==true) {
 				
 			}else if(pck_result == false){
@@ -57,13 +57,13 @@ public class MyPageController extends HttpServlet {
 		}else if(action.equals("userUpdate")) {
 			request.setCharacterEncoding("utf-8");
 			String id = request.getParameter("id").trim();
-			System.out.println(id);
+//			System.out.println(id);
 			String pw = request.getParameter("password1").trim();
-			System.out.println(pw);
+//			System.out.println(pw);
 			String name = request.getParameter("name").trim();
-			System.out.println(name);
+//			System.out.println(name);
 			String phone = request.getParameter("phone").trim();
-			System.out.println(phone);
+//			System.out.println(phone);
 			char YN= '\0';
 			char YN2= '\0';
 			if(request.getParameter("Check1") != null &&request.getParameter("Check1").trim().equals("Y")) {
@@ -71,16 +71,16 @@ public class MyPageController extends HttpServlet {
 			}else {
 				YN = 'N';
 			}
-			System.out.println(YN);
+//			System.out.println(YN);
 			if(request.getParameter("Check4") != null && request.getParameter("Check4").trim().equals("Y")) {
 				YN2 =  'Y';
 			}else {
 				YN2 = 'N';
 			}
-			System.out.println(YN2);
+//			System.out.println(YN2);
 			MyPageDao mpd = new MyPageDaoImpl();
 			boolean userUpdate_result = mpd.userUpdate(id, pw, name, phone, YN, YN2);
-			System.out.println(userUpdate_result);
+//			System.out.println(userUpdate_result);
 			if(!userUpdate_result) {
 				action = "error";
 				message = "회원정보 수정이 실패하였습니다.";

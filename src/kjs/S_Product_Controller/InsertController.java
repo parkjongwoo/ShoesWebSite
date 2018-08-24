@@ -46,7 +46,7 @@ public class InsertController extends HttpServlet {
 			
 			String pname=request.getParameter("pname");
 			String pimg_url=request.getParameter("img_url");
-			System.out.println("img_url:"+pimg_url);
+//			System.out.println("img_url:"+pimg_url);
 			String poption=request.getParameter("poption");
 			String phome=request.getParameter("phome");
 			int pdcharge=Integer.parseInt(request.getParameter("pdcharge"));
@@ -83,7 +83,7 @@ public class InsertController extends HttpServlet {
 			try {
 				requestPage= Integer.parseInt(request.getParameter("reqPage"));
 			} catch (NumberFormatException e) {
-				e.printStackTrace();
+				System.out.println("error:"+e.getMessage());
 			}
 			
 			request.setCharacterEncoding("utf-8");

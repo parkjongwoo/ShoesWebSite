@@ -6,9 +6,93 @@
 <head>
 <meta charset="utf-8">
 <title>상품등록</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript"
+<jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
+	
+
+
+</head>
+<body>
+<jsp:include page="/member/include/jsp/Header_admin.jsp"/>
+<div class="container">
+
+	<h1>상품등록</h1>
+	
+		<form id="signupForm" method="post" action="admin_productinsert">
+
+			<p>
+				<label for="pname">상품명 *</label> <input id="pname" name="pname"
+					type="text" />
+			</p>
+
+			<p>
+				<label for="pcategory">카테고리</label> <select id="cid" name="cid">
+
+					<c:forEach var="category" items="${vm}">
+
+
+						<option value="${category.cid}">${category.cname}</option>
+
+
+					</c:forEach>
+				</select>
+			</p>
+
+			<p>
+				<label for="pimg_url">이미지URL *</label> 
+				<input id="pimg_url"
+					name="pimg_url" type="file">
+
+			</p>
+
+
+
+			<p>
+				<label for="poption">옵션*</label> <input id="poption" name="poption"
+					type="text" />
+			</p>
+
+
+			<p>
+				<label for="phome">원산지*</label> <input id="phome" name="phome"
+					type="text" />
+			</p>
+
+			<p>
+				<label for="pdcharge">배송비*</label> <input id="pdcharge"
+					name="pdcharge" type="text" />
+			</p>
+
+
+			<p>
+				<label for="pprice">상품가격</label> <input id="pprice" name="pprice"
+					type="text" />
+			</p>
+
+			<p>
+				<label for="pdescription">상세설명</label> <input id="pdescription"
+					name="pdescription" type="text" />
+
+			</p>
+
+			<p>
+				<label for="ppost_yn">게시여부</label>
+				<!-- 				<input id="ppost_yn"name="ppost_yn" type="text"  /> -->
+				<input id="ppost_yn" name="ppost_yn" type="radio" value="Y" />Y <input
+					id="ppost_yn" name="ppost_yn" type="radio" value="N">N
+
+			</p>
+
+			<p>
+				<input type="hidden" name="reqPage" value="1" /> <input
+					type="submit" value="상품 등록">
+
+			</p>
+			
+		</form>
+		<a href="admin_productList">리스트 보러 가기</a>
+	</div>
+	<!-- 	<div id="result"></div> -->
+	<script type="text/javascript"
 	src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -123,85 +207,6 @@
 
 	});
 </script>
-
-</head>
-<body>
-	<h1>상품등록</h1>
-	<div class="exec">
-		<form id="signupForm" method="post" action="insert">
-
-			<p>
-				<label for="pname">상품명 *</label> <input id="pname" name="pname"
-					type="text" />
-			</p>
-
-			<p>
-				<label for="pcategory">카테고리</label> <select id="cid" name="cid">
-
-					<c:forEach var="category" items="${vm}">
-
-
-						<option value="${category.cid}">${category.cname}</option>
-
-
-					</c:forEach>
-				</select>
-			</p>
-
-			<p>
-				<label for="pimg_url">이미지URL *</label> 
-				<input id="pimg_url"
-					name="pimg_url" type="file">
-
-			</p>
-
-
-
-			<p>
-				<label for="poption">옵션*</label> <input id="poption" name="poption"
-					type="text" />
-			</p>
-
-
-			<p>
-				<label for="phome">원산지*</label> <input id="phome" name="phome"
-					type="text" />
-			</p>
-
-			<p>
-				<label for="pdcharge">배송비*</label> <input id="pdcharge"
-					name="pdcharge" type="text" />
-			</p>
-
-
-			<p>
-				<label for="pprice">상품가격</label> <input id="pprice" name="pprice"
-					type="text" />
-			</p>
-
-			<p>
-				<label for="pdescription">상세설명</label> <input id="pdescription"
-					name="pdescription" type="text" />
-
-			</p>
-
-			<p>
-				<label for="ppost_yn">게시여부</label>
-				<!-- 				<input id="ppost_yn"name="ppost_yn" type="text"  /> -->
-				<input id="ppost_yn" name="ppost_yn" type="radio" value="Y" />Y <input
-					id="ppost_yn" name="ppost_yn" type="radio" value="N">N
-
-			</p>
-
-			<p>
-				<input type="hidden" name="reqPage" value="1" /> <input
-					type="submit" value="상품 등록">
-
-			</p>
-			
-		</form>
-		<a href="/ShoesWebSite/search">리스트 보러 가기</a>
-	</div>
-	<!-- 	<div id="result"></div> -->
+<jsp:include page="/member/include/jsp/Footer_admin.jsp"/> 
 </body>
 </html>

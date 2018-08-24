@@ -11,7 +11,8 @@
 <jsp:include page="/member/include/jsp/Header.jsp"/>
 <div class="container">
 <form action="qna_save" method="post">
-작성자<input type="text" name="mid" value=""/>
+<input type="hidden" name="mid" value="${member.mid}"/>
+작성자: ${member.mname}
 제목<input type="text" name="title" />
 내용<textarea name="content"></textarea>
 <input type="submit" value="작성"/>
