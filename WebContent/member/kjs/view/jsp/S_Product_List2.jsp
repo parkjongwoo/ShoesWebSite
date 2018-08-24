@@ -67,7 +67,7 @@
 		
 		<hr />
 		
-		<a href="adminProductForm">상품 등록하러 가기</a>
+		<a href="admin_productForm">상품 등록하러 가기</a>
 		<hr />
 		
 		<a href="/ShoesWebSite/admin_main">관리자 메인으로 돌아가기</a>
