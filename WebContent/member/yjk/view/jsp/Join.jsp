@@ -18,7 +18,7 @@
 </head>
 <body>
 <jsp:include page="/member/include/jsp/Header.jsp"/> 
-	<div class="container" style="padding:200px 0;">
+	<div class="container">
 		<form method="post" action="userJoin" id="registerForm">
 			<table class="table table-hover" style="text-align: center;">
 				<thead>

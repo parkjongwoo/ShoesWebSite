@@ -18,7 +18,7 @@
 <jsp:include page="/member/include/jsp/Header.jsp"/>
 	<div class="container">
     <br><br>
-    <h1 class="h3 mb-3 font-weight-normal" style="text-align:center;">로그인</h1>
+    <h1 class="h3 mb-3 font-weight-normal" style="text-align:center;"><img alt="logo.jpg" src="member/include/images/logo.jpg" width="150px" height="100px"><p>로그인</p></h1>
     <form action="userLogin" method="post" name="loginForm" id="loginForm">   
       <input type="email" id="inputEmail" class="form-control" placeholder="아이디" required autofocus name="userEmail">
       <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" name="userPassword" required>

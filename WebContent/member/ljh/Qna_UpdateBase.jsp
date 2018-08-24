@@ -31,19 +31,19 @@
 			</tr>
 			<tr>
 				<th scope="row">작성자</th>
-				<td>${qna.mid}</td>
+				<td>${qna.qname}</td>
 				<th scope="row">작성시간</th>
 				<td>${qna.qdate}</td>
 			</tr>
 			<tr>
 				<th scope="row">제목</th>
 				<td colspan="3">
-				<input type="hidden" name="id" value="${qna.qid}">
-				<input type="text" name="title" /></td>
+				<input type="hidden" name="mid" value="${qna.qid}">
+				<input type="text" name="qtitle" /></td>
 			</tr>
 			<tr>
 				<td colspan="4" style="border: 1px solid #ccc; height: 100px;">
-				<textarea rows="10" cols="60" name="content"></textarea></td>
+				<textarea rows="10" cols="60" name="qcontent"></textarea></td>
 			</tr>
 		</tbody>
 	</table>

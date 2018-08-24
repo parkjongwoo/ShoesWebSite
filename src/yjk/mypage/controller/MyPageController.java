@@ -100,6 +100,8 @@ public class MyPageController extends HttpServlet {
 		}else if(action.equals("update_user")) {
 			dispatchUrl = "/member/yjk/view/jsp/MyPage_Check.jsp";
 		}else if(action.equals("ok")) {
+			HttpSession session = request.getSession();
+			session.invalidate();
 			dispatchUrl = "/member/yjk/view/jsp/MyPage.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(dispatchUrl);

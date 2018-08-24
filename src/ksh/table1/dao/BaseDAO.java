@@ -8,9 +8,9 @@ import common.Oracle_Info;
 public class BaseDAO {
 
 	Connection con = null;
-//	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-	String url=Oracle_Info.DB_URL;
-	String user = "scott";  
+	String url = Oracle_Info.DB_URL; 
+//	String url = "jdbc:oracle:thin:@172.16.3.4:1521:orcl"; 
+	String user = "scott"; 
 	String password = "tiger";
 	
 	public Connection getConnection() throws Exception{

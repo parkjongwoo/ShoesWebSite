@@ -7,28 +7,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<hr />
-		<form method="post" action="NoticeInsert">
-		<table border="1">
+<jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
+	
+	<div style="margin: 200px 200px 70px 200px;">
+		<center>
+	<table>
+	<tr align = "center" class="table">
+		<td><a href="NoticeSelectAll" style="text-decoreation:none;"><h5>공지사항</h5></a></td> <td><a href="qna_search" style="text-decoreation:none;"><h5>1:1문의</h5></a></td>
+	</tr>
+	</table>
+	<hr/>
+		<form method="post" action="NoticeInsert ">
+		<table class="table table-striped">
 			<tr align="center">
-				<td colspan="2">게시물 등록</td>
+				<th colspan="2">공지사항 등록</th>
 			</tr>
 			<tr align="center">
-				<td>작성자</td><td><input type="text" name="mid"/></td>
+				<td><input type="text" name="mid" size="20" style="margin-left: -350px;" placeholder="작성자를 입력하세요"/><br><br>
+				<input name="ntitle" size="20" style="margin-left: -350px;"placeholder="글제목을 입력하세요" /><br><br>
+				<textarea  name="ncontent" cols="70" rows="10" placeholder="내용을 입력해 주세요"></textarea></td>
 			</tr>
-			<tr align="center">
-				<td>내용</td><td><textarea  name="ncontent"></textarea></td>
-			</tr>
-			<tr align="center">
-				<td>제목</td><td><textarea  name="ntitle"></textarea></td>
-			</tr>
-			
 		</table>
-		<input type="submit" value="게시물 등록"/>
+		<c:if test="${!empty adminmember }">
+		<input type="submit" class="btn testBoder" value="게시물 등록"/>
+		</c:if>
+		<input type="submit" class="btn testBoder" value="게시물 등록"/>
 		</form>
-		
 		<br/>
 	</div>
+	<jsp:include page="/member/include/jsp/Footer.jsp"/>
 </body>
 </html>

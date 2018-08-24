@@ -1,18 +1,19 @@
 package ksh.table1.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 import common.Oracle_Info;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class BaseDao2 implements Dao2{
 
 	String driver="oracle.jdbc.driver.OracleDriver";
-//	String url="jdbc:oracle:thin:@localhost:1521:orcl";
-	String url=Oracle_Info.DB_URL;
+	String url = Oracle_Info.DB_URL;
+//	String url="jdbc:oracle:thin:@172.16.3.4:1521:orcl";
 	String username="scott";
 	String password="tiger";
 

@@ -117,12 +117,13 @@ public class BasketController extends HttpServlet {
 			}
 		} else if (action.equals("basketUpdateJson")) {
 			Member m = (Member)request.getSession().getAttribute("member");
-			String pid = request.getParameter("pid");
 			String mid = m.getMid();
+			String pid = request.getParameter("pid");
 			String quantity = request.getParameter("quantity");
 			String idx = request.getParameter("idx");
 			System.out.println("pid:"+pid+" mid:"+mid);
 			List<BasketListItem> sessionlist = (List<BasketListItem>)request.getSession().getAttribute("basketList");
+			
 			boolean result = false;
 			if(pid != null && mid != null && idx != null) {
 				try {
@@ -132,7 +133,7 @@ public class BasketController extends HttpServlet {
 					basket.setPid(Integer.parseInt(pid));
 					
 					if(sessionlist!=null) {
-						sessionlist.get(Integer.parseInt(idx)).setBquantity(basket.getBquantity());;
+						sessionlist.get(Integer.parseInt(idx)).setBquantity(basket.getBquantity());
 						request.getSession().setAttribute("basketList",sessionlist);						
 					}
 					result = dao.update(basket);

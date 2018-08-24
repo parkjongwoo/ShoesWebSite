@@ -31,20 +31,37 @@
 							</tr>
 						</thead>
 						<tbody id="tableBody">
-							<c:forEach var="item" items="${basketList}" varStatus="s" begin="0">
-								<tr data-pid="${item.pid}"  data-pname="${item.pname}" data-bquantity="${item.bquantity}" data-pdcharge="${item.pdcharge}" data-pprice="${item.pprice}">
-									<td><input class="pcheck" type="checkbox"></td>
-									<td>${item.pname}</td>
-									<td>
-										<input class="pamount" type="text" value="${item.bquantity}">
-										<button class="btn btn-secondary btn-sm btn_change_pamount" type="button">변경</button>
-									</td>
-									<td>
-										<p><span class="pdcharge">${item.pdcharge}</span>원 주문시결제</p>
-									</td>
-									<td><span class="pprice">${item.pprice}</span>원</td>
-									<td><button class="btn btn-secondary btn-sm btn_delete" type="button">삭제</button></td>							
-								</tr>							
+							<c:forEach var="item" items="${basketList}" varStatus="s">
+								<c:choose>
+									<c:when test="${s.first}">
+										<tr data-pid="${item.pid}"  data-pname="${item.pname}" data-bquantity="${item.bquantity}" data-pdcharge="${item.pdcharge}" data-pprice="${item.pprice}">
+											<td><input class="pcheck" type="checkbox"></td>
+											<td>${item.pname}</td>
+											<td>
+												<input class="pamount" type="text" value="${item.bquantity}">
+												<button class="btn btn-secondary btn-sm btn_change_pamount" type="button">변경</button>
+											</td>
+											<td rowspan="${basketList.size()}">
+												<p><span class="pdcharge">${item.pdcharge}</span>원 주문시결제</p>
+											</td>
+											<td><span class="pprice">${item.pprice}</span>원</td>
+											<td><button class="btn btn-secondary btn-sm btn_delete" type="button">삭제</button></td>							
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr data-pid="${item.pid}"  data-pname="${item.pname}" data-bquantity="${item.bquantity}" data-pdcharge="${item.pdcharge}" data-pprice="${item.pprice}">
+											<td><input class="pcheck" type="checkbox"></td>
+											<td>${item.pname}</td>
+											<td>
+												<input class="pamount" type="text" value="${item.bquantity}">
+												<button class="btn btn-secondary btn-sm btn_change_pamount" type="button">변경</button>
+											</td>											
+											<td><span class="pprice">${item.pprice}</span>원</td>
+											<td><button class="btn btn-secondary btn-sm btn_delete" type="button">삭제</button></td>							
+										</tr>
+									</c:otherwise>
+								</c:choose>
+															
 							</c:forEach>
 							<c:if test="${empty basketList}">
 								<tr><td class="text-center" colspan="6">장바구니에 상품이 없습니다.</td></tr>								
@@ -108,10 +125,19 @@
 // 			updateTotalCharge();
 // 		});
 		updateTotalCharge();
-		$("#tableBody").on("click","button.btn_change_pamount",function(){
-			console.log("수량변경클릭:"+$(".btn_change_pamount").index(this));
+		$("#tableBody").on("click","tr td button.btn_change_pamount",function(){
+			var tr = $(this).parent().parent();
 			var idx = $(".btn_change_pamount").index(this);
-			
+			var pid = tr.attr("data-pid");
+			var quantity = Number($(this).prev().val());
+			console.log("pid:"+pid+" quantity:"+quantity+" idx:"+idx);
+			$.post("basketUpdateJson", {"pid":pid,"idx":idx,"quantity":quantity}, function(data) {
+				if(data.result.success){
+					var msg = data.result.msg;
+					basketList = data.result.data;					
+				}				
+			});
+			updateTotalCharge();
 		});		
 		
 		$("#tableBody").on("click","button.btn_delete",function(){

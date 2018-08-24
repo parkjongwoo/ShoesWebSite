@@ -32,7 +32,7 @@
 			</tr>
 			<tr>
 				<th scope="row">작성자</th>
-				<td>${qna.mid}</td>
+				<td>${qna.qname}</td>
 				<th scope="row">작성시간</th>
 				<td>${qna.qdate}</td>
 			</tr>
@@ -47,8 +47,8 @@
 	</table>
 	
 	<a href="qna_up?qid=${qna.qid}">수정</a>
-	<input type="hidden" name="id" value="${qna.qid}"/>
-	<input type="submit" name="dalete" value="삭제하기" />
+	<input type="hidden" name="mid" value="${qna.qid}"/>
+	<input type="submit" name="delete" value="삭제하기" />
 	<a href="qna_search">목록</a>
 	</form>
 	</div>

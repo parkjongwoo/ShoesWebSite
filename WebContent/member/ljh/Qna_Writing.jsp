@@ -11,14 +11,17 @@
 <jsp:include page="/member/include/jsp/Header.jsp"/>
 <div class="container">
 <form action="qna_save" method="post">
-<input type="hidden" name="mid" value="${member.mid}"/>
+<input type="hidden" name="mid" value="${member.mid}">
+<input type="hidden" name="mname" value="${member.mname}" >
 작성자: ${member.mname}
-제목<input type="text" name="title" />
-내용<textarea name="content"></textarea>
+제목<input type="text" name="qtitle" />
+${qnaerror.titleerror}
+내용<textarea name="qcontent"></textarea>
+${qnaerror.contenterror}
 <input type="submit" value="작성"/>
 <input type="reset" value="취소" />
-${qnaerror.titleerror}
-${qnaerror.contenterror}
+
+
 </form>
 </div>
 <jsp:include page="/member/include/jsp/Footer.jsp"/> 

@@ -18,10 +18,11 @@ import ljh.qna.pageservice.PageManager;
 public class QnaDaoImpl extends BaseDao implements QnaDao{
 
 	public static final String MEMO_SELECT_PAGE_SQL=
-			"select qid, QTITLE,QCONTENT , qdate, qhit, QPARENT , MID" + 
-			" from(select rownum rn, s_qnas.* " + 
-			" from(select * from s_qna order by qid desc)s_qnas) " + 
-			" where rn between ? and ?";
+			 "select RN, qid, QTITLE, QCONTENT, qdate, qhit, MID, MAUTH, Mname"
+			         + " from(select rownum rn, Q.*"
+			         + " from(select * from S_QNA_VIEW order by s_qna_view.qid desc) Q)"
+			         + " where rn between ? and ? ";
+			
 	
 	public boolean insert(Qna_model qna) {
 		Connection con = null;
@@ -111,6 +112,7 @@ public class QnaDaoImpl extends BaseDao implements QnaDao{
 				rs = st.executeQuery();
 				while(rs.next()) {
 					Qna_model qna = new Qna_model();
+					qna.setMAUTH(rs.getString("MAUTH"));
 					qna.setQid(rs.getInt("QID"));
 					qna.setQtitle(rs.getString("QTITLE"));
 					qna.setQcontent(rs.getString("QCONTENT"));
@@ -118,6 +120,8 @@ public class QnaDaoImpl extends BaseDao implements QnaDao{
 					qna.setQhit(rs.getInt("QHIT"));
 					qna.setQparent(rs.getString("QPARENT"));
 					qna.setMid(rs.getString("MID"));
+					qna.setQname(rs.getString("MNAME"));
+					qna.setRn(rs.getInt("rn"));
 					qnalist.add(qna);		
 				}
 			} catch (SQLException e) {
@@ -153,8 +157,9 @@ public class QnaDaoImpl extends BaseDao implements QnaDao{
 					qna.setQcontent(rs.getString("QCONTENT"));
 					qna.setQdate(rs.getDate("QDATE"));
 					qna.setQhit(rs.getInt("QHIT"));
-					qna.setQparent(rs.getString("QPARENT"));
+					qna.setRn(rs.getInt("RN"));
 					qna.setMid(rs.getString("MID"));
+					qna.setQname(rs.getString("MNAME"));
 					qnalist.add(qna);	
 					
 				}
@@ -184,7 +189,8 @@ public class QnaDaoImpl extends BaseDao implements QnaDao{
 					qna.setQdate(rs.getDate("QDATE"));
 					qna.setQhit(rs.getInt("QHIT"));
 					qna.setQparent(rs.getString("QPARENT"));
-					qna.setMid(rs.getString("MID"));	
+					qna.setMid(rs.getString("MID"));
+					qna.setQname(rs.getString("MNAME"));
 				}
 			} catch (SQLException e) {
 				System.out.println("detail문 실패 : " + e.getMessage());

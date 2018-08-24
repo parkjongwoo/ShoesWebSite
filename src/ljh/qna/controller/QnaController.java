@@ -52,16 +52,17 @@ public class QnaController extends HttpServlet {
 			QnaErrorModel qnaErrorModel = new QnaErrorModel();
 			//유효성 검사
 
-			qnaErrorModel.setQtitle(request.getParameter("title"));
-			qnaErrorModel.setQcontent(request.getParameter("content"));
+			qnaErrorModel.setQtitle(request.getParameter("qtitle"));
+			qnaErrorModel.setQcontent(request.getParameter("qcontent"));
 			QnaValidate qnaValidate = new QnaValidate();
 			QnaError qnaerror = qnaValidate.validate(qnaErrorModel);
 
 			if(!qnaerror.isResult()) {
 				Qna_model qna = new Qna_model();
 				qna.setMid(request.getParameter("mid"));
-				qna.setQtitle(request.getParameter("title"));
-				qna.setQcontent(request.getParameter("content"));
+				qna.setQname(request.getParameter("mname"));
+				qna.setQtitle(request.getParameter("qtitle"));
+				qna.setQcontent(request.getParameter("qcontent"));
 				QnaDao qnadao = new QnaDaoImpl();
 				qnadao.insert(qna);
 			}else {
@@ -71,22 +72,23 @@ public class QnaController extends HttpServlet {
 			}
 		}else if(action.equals("qna_update")) {
 			Qna_model qna = new Qna_model();
-			qna.setQid(Integer.parseInt(request.getParameter("id")));
-			qna.setQtitle(request.getParameter("title"));
-			qna.setQcontent(request.getParameter("content"));
+			qna.setQid(Integer.parseInt(request.getParameter("mid")));
+			qna.setQtitle(request.getParameter("qtitle"));
+			qna.setQcontent(request.getParameter("qcontent"));
 			QnaDao qnadao = new QnaDaoImpl();
 			qnadao.update(qna);
 
 		}else if(action.equals("qna_delete")) {
-			int qid = Integer.parseInt(request.getParameter("id"));
+			int qid = Integer.parseInt(request.getParameter("mid"));
 			QnaDao qnadao = new QnaDaoImpl();
 			qnadao.delete(qid);
 		}else if(action.equals("qna_search")) {
 			int requestPage = 1;
 			try {
 				requestPage = Integer.parseInt(request.getParameter("reqPage"));
+				System.out.println(requestPage);
 			} catch (NumberFormatException e) {
-				System.out.println("error:"+e.getMessage());
+				e.printStackTrace();
 			}
 			
 			QnaDao qnadao = new QnaDaoImpl();
@@ -94,7 +96,7 @@ public class QnaController extends HttpServlet {
 			PageManager pageManager = new PageManager(requestPage);
 			PageGroupResult pageGroupResult = 
 					pageManager.getPageGroupResult(CountSql.MEMO_SELECT_ALL_COUNT_SQL);
-			
+
 
 			request.setAttribute("pageGroupResult", pageGroupResult);
 			request.setAttribute("qnalist", qnalist);

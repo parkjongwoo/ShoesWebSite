@@ -8,13 +8,37 @@ public class Qna_model {
 	private String qtitle;
 	private String qcontent;
 	private Date qdate;
+	private String qname;
+	private int qhit;
+	private int rn;
+	private String MAUTH;
+	
+	
+	public int getRn() {
+		return rn;
+	}
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+	public String getMAUTH() {
+		return MAUTH;
+	}
+	public void setMAUTH(String mAUTH) {
+		MAUTH = mAUTH;
+	}
+	public String getQname() {
+		return qname;
+	}
+	public void setQname(String qname) {
+		this.qname = qname;
+	}
 	public Date getQdate() {
 		return qdate;
 	}
 	public void setQdate(Date qdate) {
 		this.qdate = qdate;
 	}
-	private int qhit;
+	
 	private String qparent;
 	
 	public int getQid() {

@@ -45,9 +45,9 @@
 
 				<tr>
 
-					<td>${qnalist.qid}</td>
+					<td>${qnalist.rn}</td>
 					<td><a href="qna_action?qid=${qnalist.qid}">${qnalist.qtitle}</a></td>
-					<td>${qnalist.mid}</td>
+					<td>${qnalist.qname}</td>
 					<td>${qnalist.qdate}</td>
 					<td>${qnalist.qhit}</td>
 
@@ -74,7 +74,7 @@
 
 	</ul>
 	<c:choose>
-		<c:when test="${empty member }">
+		<c:when test="${empty member}">
 			<p>글쓰기</p>
 		</c:when>
 		<c:otherwise>

@@ -9,64 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>신발 쇼핑몰</title>
 <jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
-<script type="text/javascript"
-	src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-<script id="itemTemplate" type="text/x-jQuery-tmpl">
-<tr>
-	<td><input class="pcheck" type="checkbox" ></td>
-	<td>\${pname}</td>
-	<td>
-		<input class="pamount" type="text" value="\${bquantity}">
-		<input class="btn_change_pamount" type="button" value="변경">
-	</td>
-	<td>
-		<p><span class="pdcharge">\${pdcharge}</span>원 주문시결제</p>
-	</td>
-	<td><span class="pprice">\${pprice}</span>원</td>
-	<td><input class="btn_delete" type="button" value="삭제"></td>							
-</tr>
-</script>
-<script type="text/javascript">
-	var basketData;
-	$(document).ready(function() {
-// 		$.get("basketListJson", null, function(data) {
-// 			console.log(data.list);
-// 			basketData = data.list;
-// 			$("#itemTemplate").tmpl(data.list).appendTo("#tableBody");
-// 			updateTotalCharge();
-// 		});
 
-		$("#go_deal").on("click", function(){
-			location.href = "dealInsert";
-		});
-		$("#cancel_deal").on("click", function(){
-			location.href = "main";
-		});
-	});
-	function updateTotalCharge() {
-		var tot = getTotalPrice();
-		var dc = getDcharge();
-		$("#total").html(tot);
-		$("#dcharge").html(dc);
-		$("#ptotal").html(tot + dc);
-	}
-	function getTotalPrice() {
-		var result = 0;
-		$(basketData).each(function(idx, item) {
-			result += Number(item.pprice);
-		});
-		return result;
-	}
-	function getDcharge() {
-		var result = 0;
-		$(basketData).each(function(idx, item) {
-			if (result < item.pdcharge) {
-				result = Number(item.pdcharge);
-			}
-		});
-		return result;
-	}
-</script>
 </head>
 <body>
 <jsp:include page="/member/include/jsp/Header.jsp"/>
@@ -90,12 +33,25 @@
 						</thead>
 						<tbody id="tableBody">
 						<c:forEach var="item" items="${basketList}" varStatus="s" begin="0">
-							<tr>
-								<td>${item.pname}</td>
-								<td><span class="pamount">${item.bquantity}</span></td> 
-								<td><span class="pdcharge">${item.pdcharge}</span>원 주문시결제</td>
-								<td><span class="pprice">${item.pprice}</span>원</td>
-							</tr>						
+							<c:choose>
+								<c:when test="${s.first}">
+									<tr>
+										<td>${item.pname}</td>
+										<td><span class="pamount">${item.bquantity}</span></td> 
+										<td rowspan="${basketList.size()}"><span class="pdcharge">${item.pdcharge}</span>원 주문시결제</td>
+										<td><span class="pprice">${item.pprice}</span>원</td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td>${item.pname}</td>
+										<td><span class="pamount">${item.bquantity}</span></td> 
+										<td><span class="pdcharge">${item.pdcharge}</span>원 주문시결제</td>
+										<td><span class="pprice">${item.pprice}</span>원</td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
+													
 						</c:forEach>
 						</tbody>
 						<tfoot class="thead-light">
@@ -195,6 +151,66 @@
 		</div>
 	</div>
 	</main>
-<jsp:include page="/member/include/jsp/Footer.jsp"/> 
+<jsp:include page="/member/include/jsp/Footer.jsp"/>
+<script type="text/javascript"
+	src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+<script id="itemTemplate" type="text/x-jQuery-tmpl">
+<tr>
+	<td><input class="pcheck" type="checkbox" ></td>
+	<td>\${pname}</td>
+	<td>
+		<input class="pamount" type="text" value="\${bquantity}">
+		<input class="btn_change_pamount" type="button" value="변경">
+	</td>
+	<td>
+		<p><span class="pdcharge">\${pdcharge}</span>원 주문시결제</p>
+	</td>
+	<td><span class="pprice">\${pprice}</span>원</td>
+	<td><input class="btn_delete" type="button" value="삭제"></td>							
+</tr>
+</script>
+<script type="text/javascript">
+	var basketData;
+	$(document).ready(function() {
+// 		$.get("basketListJson", null, function(data) {
+// 			console.log(data.list);
+// 			basketData = data.list;
+// 			$("#itemTemplate").tmpl(data.list).appendTo("#tableBody");
+// 			updateTotalCharge();
+// 		});
+		updateTotalCharge();
+		$("#go_deal").on("click", function(){
+			location.href = "dealInsert";
+		});
+		$("#cancel_deal").on("click", function(){
+			location.href = "main";
+		});
+	});
+	function updateTotalCharge(){
+		var tot = getTotalPrice();
+		var dc = getDcharge();
+		$("#total").html(tot);
+		$("#dcharge").html(dc);
+		$("#ptotal").html(tot+dc);
+	}
+	function getTotalPrice(){
+		var result = 0;
+		$("#tableBody").children().each(function(idx,item){
+			var pprice = Number($(this).attr("data-pprice")) * Number($(this).attr("data-bquantity"));				
+			result+=Number(pprice);
+		});
+		return result;
+	}
+	function getDcharge(){
+		var result = 0;
+		$("#tableBody").children().each(function(idx,item){
+			var pdcharge = Number($(this).attr("data-pdcharge"));
+			if(result<pdcharge){
+				result=pdcharge;
+			}			
+		});
+		return result;
+	}
+</script> 
 </body>
 </html>
