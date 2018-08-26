@@ -24,8 +24,9 @@
 						<div class="card mb-4 shadow-sm">
 							<img class="card-img-top" src="${item.pimgurl}" alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-text text-center">${item.pname}</h5>
-								<p class="card-text text-center">${item.cname}</p>
+								<h5 class="card-title text-center">${item.pname}</h5>
+								<h6 class="card-subtitle text-center mb-2 text-muted">${item.cname}</h6>
+								<p class="card-text text-center">${item.pprice}원</p>
 							</div>
 						</div>
 					</div>

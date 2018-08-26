@@ -20,7 +20,7 @@ public class QnaDaoImpl extends BaseDao implements QnaDao{
 	public static final String MEMO_SELECT_PAGE_SQL=
 			 "select RN, qid, QTITLE, QCONTENT, qdate, qhit, MID, MAUTH, Mname"
 			         + " from(select rownum rn, Q.*"
-			         + " from(select * from S_QNA_VIEW order by s_qna_view.qid desc) Q)"
+			         + " from(select * from S_QNA_VIEW ) Q)"
 			         + " where rn between ? and ? ";
 			
 	

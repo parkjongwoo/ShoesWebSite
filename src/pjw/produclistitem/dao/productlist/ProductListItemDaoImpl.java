@@ -31,6 +31,9 @@ public class ProductListItemDaoImpl extends BaseDao implements ProductListItemDa
 				item.setPname(rs.getString(2));
 				item.setPimgurl(rs.getString(3));
 				item.setCname(rs.getString(4));
+				item.setPprice(rs.getInt(5));
+				item.setQuan(rs.getInt(6));
+				item.setPdate(rs.getDate(7));
 				list.add(item);
 			}
 		} catch (SQLException e) {
@@ -47,7 +50,7 @@ public class ProductListItemDaoImpl extends BaseDao implements ProductListItemDa
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
+
 		try {
 			con = getConnection();
 			ps = con.prepareStatement(SQL.PRODUCTLIST_SELECT_POP);
@@ -59,6 +62,9 @@ public class ProductListItemDaoImpl extends BaseDao implements ProductListItemDa
 				item.setPname(rs.getString(2));
 				item.setPimgurl(rs.getString(3));
 				item.setCname(rs.getString(4));
+				item.setPprice(rs.getInt(5));
+				item.setQuan(rs.getInt(6));
+				item.setPdate(rs.getDate(7));
 				list.add(item);
 			}
 		} catch (SQLException e) {
@@ -88,6 +94,7 @@ public class ProductListItemDaoImpl extends BaseDao implements ProductListItemDa
 				item.setPname(rs.getString(2));
 				item.setPimgurl(rs.getString(3));
 				item.setCname(rs.getString(4));
+				item.setPprice(rs.getInt(5));
 				list.add(item);
 			}
 		} catch (SQLException e) {
@@ -117,6 +124,7 @@ public class ProductListItemDaoImpl extends BaseDao implements ProductListItemDa
 				item.setPname(rs.getString(2));
 				item.setPimgurl(rs.getString(3));
 				item.setCname(rs.getString(4));
+				item.setPprice(rs.getInt(5));
 				list.add(item);
 			}
 		} catch (SQLException e) {

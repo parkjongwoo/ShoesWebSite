@@ -1,7 +1,16 @@
 package pjw.basket.sql;
 
 public class SQL {
-	public static final String BASKET_INSERT = "INSERT INTO S_BASKET VALUES(?, ?, ?, SYSDATE)";
+	public static final String BASKET_INSERT = 
+			"MERGE INTO S_BASKET B " + 
+			"USING (SELECT ? MID,? PID,? BQUANTITY, SYSDATE BDATE FROM dual) N " + 
+			"ON ( B.MID = N.MID and B.PID = N.PID) " + 
+			"WHEN MATCHED THEN " + 
+			"UPDATE " + 
+			"SET B.BQUANTITY = N.BQUANTITY " + 
+			"WHEN NOT MATCHED THEN " + 
+			"INSERT (MID, PID, BQUANTITY, BDATE) " + 
+			"VALUES (N.MID, N.PID, N.BQUANTITY, N.BDATE)";
 	
 	public static final String BASKET_SELECT_BY_PID =
 			"SELECT PID, PNAME, PDCHARGE, PPRICE " + 

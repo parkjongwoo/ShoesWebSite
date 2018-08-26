@@ -1,7 +1,6 @@
-package pjw.deal.util;
+package pjw.basket.util;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -22,15 +21,15 @@ import pjw.basket.model.BasketListItem;
 import yjk.join.model.Member;
 
 /**
- * Servlet Filter implementation class DealFilter
+ * Servlet Filter implementation class BasketFilter
  */
-@WebFilter("/product_buy/*")
-public class DealFilter implements Filter {
+@WebFilter("/basketInsertJson")
+public class BasketFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public DealFilter() {
+    public BasketFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -53,50 +52,15 @@ public class DealFilter implements Filter {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");		
 		
-		String pids = request.getParameter("pid");
-		String quantitys = request.getParameter("quantity");
-		String orderLists = request.getParameter("orderList");
-		int pid=-1;
-		int quantity=-1;
-		
-		try {
-			pid = Integer.parseInt(pids);
-			quantity = Integer.parseInt(quantitys);
-		} catch (NumberFormatException e) {
-			System.out.println("error:"+e.getMessage());
-		}
 		
 		Member m = (Member)session.getAttribute("member");
-		String mid = null;
-		if(m!=null) {
-			mid = m.getMid();
-		}
-		List<BasketListItem> sessionlist = (List<BasketListItem>)session.getAttribute("basketList");
-		
-		
-		if(pid > 0 && quantity > 0 && mid != null) {//상품상세의 바로구매-- 쿼리 날려 데이터를 만들자
-			BasketDao basketDao = new BasketDaoImpl();
-			List<BasketListItem> dealList = basketDao.selectByPid(mid, quantity, pid);
-			session.setAttribute("orderList", dealList);
-			
-		}else if(sessionlist != null && sessionlist.size()>0) {//세션 장바구니
-			if(orderLists!=null) {
-				List<BasketListItem> selectedList = new ArrayList<BasketListItem>();
-				String[] orderList = orderLists.split(",");
-				for(int i=0;i<orderList.length;i++) {	
-					int idx = Integer.parseInt(orderList[i]);
-					selectedList.add(sessionlist.get(idx));					
-				}
-				sessionlist = null;
-				session.setAttribute("orderList", selectedList);
-			}else {
-				session.setAttribute("orderList", sessionlist);
-			}
-		}else {//표시할 수 있는 상품이 없음. 응답 중단
-			RequestDispatcher dispatcher = req.getRequestDispatcher("dealError");
+		if(m==null) {
+			req.setAttribute("result", false);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("basketLoginError");
 			dispatcher.forward(request, response);
 			return;
 		}
+		
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
 	}

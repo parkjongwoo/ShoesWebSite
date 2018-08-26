@@ -44,7 +44,8 @@ public class InsertImpl extends BaseDao implements InsertInterface {
 			
 			
 		}catch(Exception e) {
-			
+			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		
 		return a;

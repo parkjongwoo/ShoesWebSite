@@ -32,4 +32,9 @@ public class SQL {
 			"NULL) "; //상품평번호 - 상품평 등록시 추가됨 " +	 
 			
 	public static final String DEAL_INSERT_ENDING = " SELECT * FROM DUAL";
+	
+	
+	public static final String DEAL_SELECT_RECENT_LIST =
+			"SELECT DDNAME, DDPHONE, DDPHONE2, DDZIPCODE, DDADRESS, DDA_DETAIL,DDMSG "+ 
+			"FROM S_DEAL WHERE MID=? ORDER BY DDATE DESC";
 }

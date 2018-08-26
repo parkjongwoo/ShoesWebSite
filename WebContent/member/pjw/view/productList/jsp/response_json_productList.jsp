@@ -9,7 +9,10 @@
 			"pid":"${item.pid}",
 			"pname":"${item.pname}",
 			"pimgurl":"${item.pimgurl}",
-			"cname":"${item.cname}"
+			"cname":"${item.cname}",
+			"pprice":"${item.pprice}",
+			"quan":"${item.quan}",
+			"pdate":"${item.pdate}"
 		}<c:if test="${!s.last}">,</c:if>		
 		</c:forEach>		
 	]

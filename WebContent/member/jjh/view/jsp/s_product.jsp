@@ -143,9 +143,10 @@
 			<span id="new_input">
 			수량 <br />
 				<form method="post" >
-					<input type="text"  name = "quantity" value="1" />
-					<input type="hidden" name = "pid" value="${pid}" />
-					<input type="submit" value="장바구니" formaction="/ShoesWebSite/product_cart" />
+					<input type="text" id="id_quantity" name = "quantity" value="1" />
+					<input type="hidden" id="id_pid" name = "pid" value="${pid}" />
+ 					<!--<input type="submit" value="장바구니" formaction="/ShoesWebSite/product_cart" /> -->
+					<input type="button" value="장바구니" onclick="basket.requestUpdate($('#id_pid').val(),$('#id_quantity').val())"/>
 					<input type="submit" value="구매하기" formaction="/ShoesWebSite/product_buy" />
 				</form>
 			</span>
@@ -191,7 +192,7 @@
 			<input type="hidden" name="pid" value="${pid}" />
 			</form>
 	
-	
+	<script type="text/javascript" src="member/jjh/view/js/requestBasket.js"></script>
 	<jsp:include page="/member/include/jsp/Footer.jsp"/> 	
 	
 </body>

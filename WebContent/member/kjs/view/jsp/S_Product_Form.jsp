@@ -7,16 +7,19 @@
 <meta charset="utf-8">
 <title>상품등록</title>
 <jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
-	
+<!-- link -->
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="member/jjh/css/header_nav.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="member/jjh/css/common.css"> -->
 
 
 </head>
 <body>
 <jsp:include page="/member/include/jsp/Header_admin.jsp"/>
-<div class="container">
-
-	<h1>상품등록</h1>
-	
+<main role="main" class="container mt-5" >
+	<h2 class="text-center">상품등록</h2>
+	<hr class="no-tb-m hr-b-2">
 		<form id="signupForm" method="post" action="admin_productinsert">
 
 			<p>
@@ -39,9 +42,9 @@
 
 			<p>
 				<label for="pimg_url">이미지URL *</label> 
-				<input id="pimg_url"
-					name="pimg_url" type="file">
-
+<!-- 				<input id="pimg_url" -->
+<!-- 					name="pimg_url" type="file"> -->
+				<input id="pimg_url" name="pimg_url" type="text">
 			</p>
 
 
@@ -89,40 +92,33 @@
 			</p>
 			
 		</form>
-		<a href="admin_productList">리스트 보러 가기</a>
-	</div>
+<!-- 		<a href="admin_productList">리스트 보러 가기</a> -->
+	</main>
 	<!-- 	<div id="result"></div> -->
 	<script type="text/javascript"
 	src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#pimg_url").change(function() {
-// 			var form = $('#signupForm')[0];
-// 			var formData = new FormData(form);
-			var formData = new FormData();
-			
-			formData.append("file_url", $("input[name='pimg_url']")[0].files[0]);
-// 			console.log("file:"+$("input[name='pimg_url']")[0].files[0]);
-// 			for(var i in formData.entries()){
-// 				console.log(i[0]+":"+i[1]);
-// 			}
-			console.log("클릭");
-			$.ajax({
-				url : "/ShoesWebSite/singleUpload",
-				processData : false,
-				contentType : false,
-				data : formData,
-				type : 'POST',
-				enctype:"multipart/form-data",
-				success : function(result) {					
-					var img_url = $("<input type='hidden' value="+result+" name='img_url'>");
-					$("#signupForm").append(img_url);
-					var img = $("<img>").attr("src",result);
-					$("#result").append(img);
-					console.log("업로드 성공!! url: "+result);
-				}
-			});
-		});
+// 		url입력을 텍스트로 변경하면서 파일 업로드 필요없어짐
+// 		$("#pimg_url").change(function() {
+// 			var formData = new FormData();			
+// 			formData.append("file_url", $("input[name='pimg_url']")[0].files[0]);
+// 			$.ajax({
+// 				url : "/ShoesWebSite/singleUpload",
+// 				processData : false,
+// 				contentType : false,
+// 				data : formData,
+// 				type : 'POST',
+// 				enctype:"multipart/form-data",
+// 				success : function(result) {					
+// 					var img_url = $("<input type='hidden' value="+result+" name='img_url'>");
+// 					$("#signupForm").append(img_url);
+// 					var img = $("<img>").attr("src",result);
+// 					$("#result").append(img);
+// 					console.log("업로드 성공!! url: "+result);
+// 				}
+// 			});
+// 		});
 	});
 
 	$(function() {

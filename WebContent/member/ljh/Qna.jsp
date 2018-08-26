@@ -15,10 +15,9 @@
 
 <!-- link -->
 
-<link rel="stylesheet" type="text/css"
-	href="member/jjh/css/header_nav.css">
-<link rel="stylesheet" type="text/css" href="member/jjh/css/common.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="member/jjh/css/header_nav.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="member/jjh/css/common.css"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <!-- script -->
 <jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
 

@@ -45,7 +45,7 @@ public class InsertController extends HttpServlet {
 			request.setCharacterEncoding("utf-8");
 			
 			String pname=request.getParameter("pname");
-			String pimg_url=request.getParameter("img_url");
+			String pimg_url=request.getParameter("pimg_url");
 //			System.out.println("img_url:"+pimg_url);
 			String poption=request.getParameter("poption");
 			String phome=request.getParameter("phome");

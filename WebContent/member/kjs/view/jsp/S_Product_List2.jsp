@@ -11,16 +11,16 @@
 	<jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
 	<!-- link -->
 	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="member/jjh/css/header_nav.css">
-	<link rel="stylesheet" type="text/css" href="member/jjh/css/common.css">
+<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!-- 	<link rel="stylesheet" type="text/css" href="member/jjh/css/header_nav.css"> -->
+<!-- 	<link rel="stylesheet" type="text/css" href="member/jjh/css/common.css"> -->
 	
 	<!-- script -->
 	
 </head>
 <body>
 <jsp:include page="/member/include/jsp/Header_admin.jsp"/>
-<main role="main" class="container" style="margin-top : 60px">
+<main role="main" class="container mt-5" >
 <h2 class="text-center">등록상품목록</h2>
 <hr class="no-tb-m hr-b-2">
 <br>
@@ -67,10 +67,10 @@
 		
 		<hr />
 		
-		<a href="admin_productForm">상품 등록하러 가기</a>
-		<hr />
+<!-- 		<a href="admin_productForm">상품 등록하러 가기</a> -->
+<!-- 		<hr /> -->
 		
-		<a href="/ShoesWebSite/admin_main">관리자 메인으로 돌아가기</a>
+<!-- 		<a href="/ShoesWebSite/admin_main">관리자 메인으로 돌아가기</a> -->
 			</main>
 			
 			

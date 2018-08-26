@@ -18,7 +18,7 @@
 			<a class="p-1 text-dark" href="/ShoesWebSite/mypage_request">마이페이지</a>
 		</c:if>	
 		<a class="p-1 text-dark" href="product_cart">장바구니</a>
-		<a class="p-1 text-dark" href="qna_search">고객센터</a>       
+		<a class="p-1 text-dark" href="NoticeSelectAll">고객센터</a>       
       </nav>
     </div>
 </div>
@@ -43,12 +43,12 @@
 					<a class="nav-link" href="admin_qnaList">상품Q&A</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="qna_search">1:1문의</a>
+					<a class="nav-link" href="admin_UserQnaList?reqPage=1">1:1문의</a>
 				</li>				
 			</ul>
-			<form class="form-inline my-2 my-md-0" action="productlistbykeywordPage">
-				<input id="input_search" class="form-control" type="text" placeholder="Search" name="keyword">
-			</form>
+<!-- 			<form class="form-inline my-2 my-md-0" action="productlistbykeywordPage"> -->
+<!-- 				<input id="input_search" class="form-control" type="text" placeholder="Search" name="keyword"> -->
+<!-- 			</form> -->
 		</div>
 	</div>
 </nav>

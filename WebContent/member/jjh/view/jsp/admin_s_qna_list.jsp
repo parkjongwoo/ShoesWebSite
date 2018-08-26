@@ -9,9 +9,9 @@
 
 	<!-- link -->
 	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="member/jjh/css/header_nav.css">
-	<link rel="stylesheet" type="text/css" href="member/jjh/css/common.css">
+<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!-- 	<link rel="stylesheet" type="text/css" href="member/jjh/css/header_nav.css"> -->
+<!-- 	<link rel="stylesheet" type="text/css" href="member/jjh/css/common.css"> -->
 	
 	<!-- script -->
 	
@@ -26,6 +26,7 @@
 	<jsp:include page="/member/include/jsp/Header_js_link.jsp"/>
 </head>
 <body>
+	<jsp:include page="/member/include/jsp/Header_admin.jsp"/>
 	<main role="main" class="container" style="margin-top : 60px">
 		<div class="row featurette">
 		</div>
@@ -84,5 +85,6 @@
 		</ul>
 		
 	</main>
+	<jsp:include page="/member/include/jsp/Footer_admin.jsp"/>
 </body>
 </html>

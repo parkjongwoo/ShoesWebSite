@@ -27,6 +27,7 @@ import yjk.join.model.Member;
 					"/basketDeleteJson",
 					"/basketUpdateJson",
 					"/basketClear",
+					"/basketLoginError",
 					"/godeal"})//구매화면이동.
 public class BasketController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -50,25 +51,9 @@ public class BasketController extends HttpServlet {
 		if (action.equals("product_cart")) {
 			Member m = (Member)request.getSession().getAttribute("member");
 			String mid = m.getMid();
-			String pid = request.getParameter("pid");
-			String quantity = request.getParameter("quantity");
-			List<BasketListItem> list = null;
-			if(pid!=null && quantity!=null) {
-				try {
-					Basket basket = new Basket();
-					basket.setPid(Integer.parseInt(pid));
-					basket.setMid(mid);
-					basket.setBquantity(Integer.parseInt(quantity));
-					list = dao.insertAndSelectAll(basket);
-				} catch (NumberFormatException e) {
-					System.out.println("error:"+e.getMessage());
-					list = dao.selectAllItems(mid);
-				}
-			}else {
-				list = dao.selectAllItems(mid);				
-			}
+			List<BasketListItem> list = dao.selectAllItems(mid);
 			
-			System.out.println(list);
+//			System.out.println(list);
 			request.getSession().setAttribute("basketList", list);
 			
 		} else if (action.equals("basketListJson")) {
@@ -100,7 +85,7 @@ public class BasketController extends HttpServlet {
 			String pid = request.getParameter("pid");
 			String mid = m.getMid();
 			String idx = request.getParameter("idx");
-			System.out.println("pid:"+pid+" mid:"+mid+" idx:"+idx);
+//			System.out.println("pid:"+pid+" mid:"+mid+" idx:"+idx);
 			List<BasketListItem> sessionlist = (List<BasketListItem>)request.getSession().getAttribute("basketList");
 			boolean result = false;
 			if(pid != null && mid != null && idx != null) {
@@ -118,24 +103,26 @@ public class BasketController extends HttpServlet {
 		} else if (action.equals("basketUpdateJson")) {
 			Member m = (Member)request.getSession().getAttribute("member");
 			String mid = m.getMid();
-			String pid = request.getParameter("pid");
-			String quantity = request.getParameter("quantity");
-			String idx = request.getParameter("idx");
-			System.out.println("pid:"+pid+" mid:"+mid);
+			String pids = request.getParameter("pid");
+			String quantitys = request.getParameter("quantity");
+			String idxs = request.getParameter("idx");
+			System.out.println("pid:"+pids+" mid:"+mid+" quantitys:"+quantitys);
 			List<BasketListItem> sessionlist = (List<BasketListItem>)request.getSession().getAttribute("basketList");
 			
 			boolean result = false;
-			if(pid != null && mid != null && idx != null) {
+			if(pids != null && mid != null && idxs != null) {
 				try {
-					Basket basket = new Basket();
-					basket.setMid(mid);
-					basket.setBquantity(Integer.parseInt(quantity));
-					basket.setPid(Integer.parseInt(pid));
-					
-					if(sessionlist!=null) {
-						sessionlist.get(Integer.parseInt(idx)).setBquantity(basket.getBquantity());
+					int quantity = Integer.parseInt(quantitys);
+					int pid = Integer.parseInt(pids);
+					int idx = Integer.parseInt(idxs);
+					if(sessionlist!=null && sessionlist.size()>0) {
+						sessionlist.get(idx).setBquantity(quantity);
 						request.getSession().setAttribute("basketList",sessionlist);						
 					}
+					Basket basket = new Basket();
+					basket.setMid(mid);
+					basket.setBquantity(quantity);
+					basket.setPid(pid);
 					result = dao.update(basket);
 				} catch (NumberFormatException e) {
 					System.out.println("error:"+e.getMessage());
@@ -166,6 +153,8 @@ public class BasketController extends HttpServlet {
 			requestUrl = "/member/pjw/view/basket/jsp/response_json_basketResult.jsp";
 		} else if(action.equals("basketClear")) {
 			requestUrl = "/member/pjw/view/basket/jsp/response_json_basketResult.jsp";
+		} else if(action.equals("basketLoginError")) {
+			requestUrl = "/member/pjw/view/basket/jsp/response_json_login_error.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(requestUrl);
